@@ -233,6 +233,29 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  /* ---------------- Pickup location prefill (Coverage Map -> Quote form) ----------------
+     service-area.html links each state to contact.html?pickup=STATE#quote. On load here,
+     we fill the Pickup Location field, show a brief confirmation, and highlight the field.
+     The page already scrolls to #quote via CSS scroll-behavior: smooth.
+  ------------------------------------------------------------------------- */
+  var pickupParam = new URLSearchParams(window.location.search).get("pickup");
+  if (pickupParam) {
+    var pickupField = document.getElementById("q-pickup");
+    var pickupBanner = document.getElementById("pickup-confirm");
+    if (pickupField) {
+      pickupField.value = pickupParam;
+      pickupField.classList.add("field-highlight");
+      setTimeout(function () {
+        pickupField.classList.remove("field-highlight");
+      }, 2500);
+    }
+    if (pickupBanner) {
+      pickupBanner.textContent =
+        "Pickup location set to " + pickupParam + ". Complete the form below to request your quote.";
+      pickupBanner.hidden = false;
+    }
+  }
+
   /* ---------------- Set active nav link ---------------- */
   var currentPage = window.location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".main-nav a").forEach(function (link) {

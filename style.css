@@ -1208,10 +1208,32 @@ section {
   transition: border-color var(--transition), color var(--transition), background var(--transition);
 }
 
-.state-pill:hover {
+.state-pill {
+  cursor: pointer;
+}
+
+.state-pill:hover,
+.state-pill:focus-visible {
   border-color: var(--red-dark);
   color: var(--red-dark);
   background: rgba(237, 31, 43, 0.05);
+}
+
+/* ---------- Pickup-location confirmation banner (Coverage Map -> Quote form) ---------- */
+.pickup-confirm {
+  background: rgba(30, 160, 90, 0.1);
+  color: #1e7a44;
+  border: 1px solid rgba(30, 160, 90, 0.3);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  font-size: 0.88rem;
+  margin-bottom: 22px;
+}
+
+.field-highlight {
+  border-color: var(--red) !important;
+  box-shadow: 0 0 0 3px rgba(237, 31, 43, 0.12);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 /* ---------- Steps (careers / process) ---------- */
