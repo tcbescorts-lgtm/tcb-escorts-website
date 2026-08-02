@@ -10,14 +10,15 @@ services.html       Lead / Chase / High Pole / Steer / Route Survey detail
 about.html          Company story, standards, certifications
 service-area.html   Nationwide coverage, all 50 states
 careers.html         Join the pilot car network (application form)
+resources.html      Guides & articles hub + link to FAQ
 contact.html        Get a quote (main form) + FAQ
 style.css           All styles
-script.js           Nav, forms, FAQ accordion, counters
+script.js           Nav, forms, FAQ accordion, counters, reveal animation
 logo.png, favicon-32.png, favicon-192.png, favicon-512.png
 robots.txt, sitemap.xml, vercel.json
 ```
 
-All files sit flat at the project root (no subfolders) — this matches exactly how GitHub's web upload tool saves them, so uploads never break image/CSS/JS paths. If you ever reorganize into folders, update every `href`/`src` reference across all six HTML files to match.
+All files sit flat at the project root (no subfolders) — this matches exactly how GitHub's web upload tool saves them, so uploads never break image/CSS/JS paths. If you ever reorganize into folders, update every `href`/`src` reference across all seven HTML files to match.
 
 ## One setup step before launch: connect the forms
 
@@ -40,10 +41,15 @@ Right now the site uses illustrations and icons instead of photography. Two spot
 - **Homepage hero background** — save a wide photo (1920×1080 or similar, a truck/escort scene works well) as `hero-bg.jpg`. It displays behind the dark overlay on the homepage hero, matching the "photo behind bold headline" look of your SourceBlue-style inspiration. If the file isn't there, the hero just shows the dark gradient — no broken image, no error.
 - **Interior page headers** — every other page (Services, About, Service Area, Careers, Contact) shares one optional background photo. Save it as `page-hero-bg.jpg` and it appears behind the dark overlay on all five headers at once. Same graceful fallback if it's missing.
 - **Fleet gallery** — on the About page (`about.html`), there's a 6-photo grid under "Our Fleet." Save your vehicle photos as `fleet-1.jpg` through `fleet-6.jpg` and each one fills in automatically. Empty slots show a light "Add fleet-N.jpg" placeholder instead of a broken-image icon, so it's safe to launch before you have all six.
+- **Trusted Partners logos** — the auto-scrolling logo strip (homepage) reads `partner-1.png` through `partner-8.png`. Each is a fixed rectangular slot with `contain` fitting (logos aren't cropped). Missing files show a neutral placeholder block instead of a broken-image icon, so it's safe to launch before you have all eight.
 
-All three slots are built as fixed-ratio containers with `cover` cropping, so dropping in a new or higher-res photo later never shifts the layout — just replace the file (same filename) and it slots right in.
+All slots are built as fixed-ratio containers, so dropping in a new or higher-res photo later never shifts the layout — just replace the file (same filename) and it slots right in.
 
-Photos should be reasonably compressed (under ~500KB each) so the site stays fast — most phone photos will need resizing first.
+Photos should be reasonably compressed (under ~500KB each) so the site stays fast — most phone photos will need resizing first. Partner logos should ideally be transparent PNGs.
+
+## Resources page
+
+`resources.html` is the guides/articles hub. Nine of the ten cards are non-clickable "Coming Soon" placeholders (by design — no dead links until the articles are written); the tenth, "Frequently Asked Questions," links live to the FAQ section on the Contact page (`contact.html#faq`). As you write each guide, turn its card into a real `<a>` link pointing at the new article page.
 
 ## Map
 

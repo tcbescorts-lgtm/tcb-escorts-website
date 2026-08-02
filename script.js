@@ -17,6 +17,43 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  /* ---------------- Partner logo fallback ----------------
+     Same idea as the fleet gallery: each .partner-logo holds an <img>
+     pointed at partner-1.png, partner-2.png, etc. Until those files exist,
+     show a placeholder tile instead of a broken-image icon.
+  ------------------------------------------------------------------------- */
+  document.querySelectorAll(".partner-logo img").forEach(function (img) {
+    img.addEventListener("error", function () {
+      var item = img.closest(".partner-logo");
+      if (item) item.classList.add("is-empty");
+    });
+  });
+
+  /* ---------------- Scroll-reveal animation ----------------
+     Adds .is-visible to any .reveal element as it enters the viewport.
+  ------------------------------------------------------------------------- */
+  var revealEls = document.querySelectorAll(".reveal");
+  if (revealEls.length && "IntersectionObserver" in window) {
+    var revealObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+    );
+    revealEls.forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    revealEls.forEach(function (el) {
+      el.classList.add("is-visible");
+    });
+  }
+
   /* ---------------- Mobile navigation ---------------- */
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.querySelector(".main-nav");
