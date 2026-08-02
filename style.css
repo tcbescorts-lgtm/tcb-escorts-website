@@ -300,9 +300,25 @@ section {
   align-items: center;
 }
 
+.top-bar-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  transition: background var(--transition), color var(--transition);
+}
+
+.top-bar-social a:hover {
+  background: var(--red);
+  color: var(--white);
+}
+
 .top-bar-social svg {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   fill: currentColor;
 }
 
@@ -488,10 +504,17 @@ section {
 /* ---------- Hero ---------- */
 .hero {
   position: relative;
-  background: var(--black);
+  background-color: var(--black);
+  /* Drop a photo named hero-bg.jpg in the project root and it appears here
+     automatically, dimmed by the overlay below for text legibility. If the
+     file is missing, only the overlay/gradient shows — no broken-image icon. */
+  background-image: linear-gradient(180deg, rgba(17, 17, 19, 0.86), rgba(17, 17, 19, 0.93)), url("hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: var(--white);
   overflow: hidden;
-  padding: 110px 0 100px;
+  padding: 130px 0 110px;
 }
 
 .hero::before {
@@ -572,30 +595,109 @@ section {
 }
 
 .hero-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   padding-top: 30px;
+  max-width: 640px;
+}
+
+.hero-stats .stat {
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  padding-left: 16px;
+}
+
+.hero-stats .stat:first-child {
+  border-left: none;
+  padding-left: 0;
 }
 
 .hero-stats .stat b {
   font-family: var(--font-head);
   font-size: 1.9rem;
+  line-height: 1.1;
   color: var(--white);
   display: block;
+  white-space: nowrap;
 }
 
 .hero-stats .stat span {
-  font-size: 0.8rem;
+  font-size: 0.74rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: rgba(255, 255, 255, 0.6);
+  display: block;
+  margin-top: 4px;
+}
+
+@media (max-width: 640px) {
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 16px;
+    max-width: none;
+  }
+  .hero-stats .stat:nth-child(3) {
+    border-left: none;
+    padding-left: 0;
+  }
+  .hero-stats .stat b {
+    font-size: 1.5rem;
+  }
+}
+
+/* ---------- Mobile hero & header polish ---------- */
+@media (max-width: 640px) {
+  .hero {
+    padding: 96px 0 64px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .page-hero {
+    padding: 56px 0 44px;
+  }
+
+  .brand img {
+    height: 42px;
+  }
+
+  .header-cta {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .top-bar-links span {
+    font-size: 0.72rem;
+  }
+
+  .brand-text strong {
+    font-size: 0.9rem;
+  }
+
+  .brand-text span {
+    font-size: 0.56rem;
+  }
 }
 
 .page-hero {
   position: relative;
-  background: var(--black);
+  background-color: var(--black);
+  /* Optional shared background photo for every interior page header — drop a
+     file named page-hero-bg.jpg in the project root to activate it. Missing
+     file just leaves the dark gradient in place. */
+  background-image: linear-gradient(180deg, rgba(17, 17, 19, 0.88), rgba(17, 17, 19, 0.93)), url("page-hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: var(--white);
   padding: 76px 0 60px;
   overflow: hidden;
@@ -1356,7 +1458,7 @@ section {
 .back-to-top {
   position: fixed;
   right: 22px;
-  bottom: 22px;
+  bottom: 86px;
   width: 46px;
   height: 46px;
   border-radius: 50%;
@@ -1373,6 +1475,70 @@ section {
   z-index: 900;
   border: none;
   cursor: pointer;
+}
+
+/* ---------- Floating SMS / text-dispatch button ---------- */
+.floating-sms {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--black);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  z-index: 901;
+  transition: transform var(--transition), background var(--transition);
+}
+
+.floating-sms:hover {
+  background: var(--red);
+  transform: scale(1.06);
+}
+
+.floating-sms svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.floating-sms::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--red);
+  animation: sms-pulse 2.4s ease-out infinite;
+}
+
+@keyframes sms-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .floating-sms {
+    width: 48px;
+    height: 48px;
+    right: 16px;
+    bottom: 16px;
+  }
+  .back-to-top {
+    right: 16px;
+    bottom: 74px;
+    width: 42px;
+    height: 42px;
+  }
 }
 
 .back-to-top.show {
@@ -1402,4 +1568,102 @@ section {
 
 .skip-link:focus {
   top: 12px;
+}
+
+/* ---------- Fleet gallery ---------- */
+.fleet-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .fleet-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .fleet-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fleet-item {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--off-white);
+  border: 1px solid var(--gray-100);
+}
+
+.fleet-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.fleet-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Shown automatically in place of any fleet-N.jpg that hasn't been added yet */
+.fleet-item .fleet-placeholder {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  padding: 16px;
+  color: var(--gray-500);
+  background: var(--off-white);
+}
+
+.fleet-item.is-empty .fleet-placeholder {
+  display: flex;
+}
+
+.fleet-item.is-empty img {
+  display: none;
+}
+
+.fleet-item .fleet-placeholder svg {
+  width: 32px;
+  height: 32px;
+  fill: var(--gray-300);
+}
+
+.fleet-item .fleet-placeholder span {
+  font-family: var(--font-head);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- Map embed ---------- */
+.map-embed {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-100);
+  aspect-ratio: 16 / 7;
+}
+
+.map-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .map-embed {
+    aspect-ratio: 4 / 3;
+  }
 }

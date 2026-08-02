@@ -5,6 +5,18 @@
    ========================================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
+  /* ---------------- Fleet gallery fallback ----------------
+     Each .fleet-item holds an <img> pointed at fleet-1.jpg, fleet-2.jpg, etc.
+     Until those files are added to the project, this swaps in a friendly
+     "add photo" placeholder instead of a broken-image icon.
+  ------------------------------------------------------------------------- */
+  document.querySelectorAll(".fleet-item img").forEach(function (img) {
+    img.addEventListener("error", function () {
+      var item = img.closest(".fleet-item");
+      if (item) item.classList.add("is-empty");
+    });
+  });
+
   /* ---------------- Mobile navigation ---------------- */
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.querySelector(".main-nav");
