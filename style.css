@@ -26,7 +26,7 @@
 
   /* Layout */
   --max-width: 1200px;
-  --radius: 4px;
+  --radius: 2px;
   --shadow-sm: 0 1px 3px rgba(17, 17, 19, 0.08);
   --shadow-md: 0 8px 24px rgba(17, 17, 19, 0.12);
   --shadow-lg: 0 20px 48px rgba(17, 17, 19, 0.18);
