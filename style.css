@@ -177,19 +177,6 @@ section {
   color: rgba(255, 255, 255, 0.72);
 }
 
-/* ---------- Safety chevron divider (nod to real escort-vehicle signage) ---------- */
-.chevron-strip {
-  height: 10px;
-  width: 100%;
-  background: repeating-linear-gradient(
-    -45deg,
-    var(--black),
-    var(--black) 14px,
-    var(--yellow) 14px,
-    var(--yellow) 28px
-  );
-}
-
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-flex;
@@ -265,63 +252,6 @@ section {
 }
 
 /* ---------- Header ---------- */
-.top-bar {
-  background: var(--black);
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 0.82rem;
-}
-
-.top-bar .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  gap: 16px;
-}
-
-.top-bar a {
-  color: inherit;
-}
-
-.top-bar a:hover {
-  color: var(--red);
-}
-
-.top-bar-links {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.top-bar-social {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-}
-
-.top-bar-social a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  transition: background var(--transition), color var(--transition);
-}
-
-.top-bar-social a:hover {
-  background: var(--red);
-  color: var(--white);
-}
-
-.top-bar-social svg {
-  width: 14px;
-  height: 14px;
-  fill: currentColor;
-}
-
 .site-header {
   position: sticky;
   top: 0;
@@ -361,14 +291,6 @@ section {
   font-size: 1.05rem;
   letter-spacing: 0.03em;
   color: var(--black);
-}
-
-.brand-text span {
-  display: block;
-  font-size: 0.62rem;
-  letter-spacing: 0.16em;
-  color: var(--red-dark);
-  font-weight: 600;
 }
 
 .main-nav {
@@ -414,35 +336,6 @@ section {
   gap: 18px;
 }
 
-.header-phone {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-head);
-}
-
-.header-phone svg {
-  width: 20px;
-  height: 20px;
-  fill: var(--red);
-  flex-shrink: 0;
-}
-
-.header-phone .label {
-  display: block;
-  font-size: 0.66rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gray-700);
-}
-
-.header-phone .number {
-  display: block;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--black);
-}
-
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -482,10 +375,6 @@ section {
 
   .nav-toggle {
     display: flex;
-  }
-
-  .header-phone .label {
-    display: none;
   }
 }
 
@@ -578,6 +467,16 @@ section {
 .hero h1 em {
   font-style: normal;
   color: var(--red);
+}
+
+.hero-tagline {
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--red);
+  margin: 14px 0 20px;
 }
 
 .hero p.lead {
@@ -675,16 +574,8 @@ section {
 }
 
 @media (max-width: 420px) {
-  .top-bar-links span {
-    font-size: 0.72rem;
-  }
-
   .brand-text strong {
     font-size: 0.9rem;
-  }
-
-  .brand-text span {
-    font-size: 0.56rem;
   }
 }
 
@@ -939,12 +830,6 @@ section {
   width: 62%;
   height: auto;
   opacity: 0.92;
-}
-
-.media-panel .chevron-strip {
-  position: absolute;
-  bottom: 0;
-  left: 0;
 }
 
 .media-badge {
