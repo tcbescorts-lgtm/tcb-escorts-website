@@ -1,59 +1,10 @@
 /* =========================================================================
    TCB ESCORTS LLC — Site Scripts
-   Handles: mobile nav, header shadow, FAQ accordion, animated counters,
-   quote/contact form submission (Web3Forms), back-to-top button.
+   Handles: mobile nav, FAQ accordion, quote/careers form submission
+   (Web3Forms), pickup-location prefill, back-to-top, active nav link.
    ========================================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
-  /* ---------------- Fleet gallery fallback ----------------
-     Each .fleet-item holds an <img> pointed at fleet-1.jpg, fleet-2.jpg, etc.
-     Until those files are added to the project, this swaps in a friendly
-     "add photo" placeholder instead of a broken-image icon.
-  ------------------------------------------------------------------------- */
-  document.querySelectorAll(".fleet-item img").forEach(function (img) {
-    img.addEventListener("error", function () {
-      var item = img.closest(".fleet-item");
-      if (item) item.classList.add("is-empty");
-    });
-  });
-
-  /* ---------------- Partner logo fallback ----------------
-     Same idea as the fleet gallery: each .partner-logo holds an <img>
-     pointed at partner-1.png, partner-2.png, etc. Until those files exist,
-     show a placeholder tile instead of a broken-image icon.
-  ------------------------------------------------------------------------- */
-  document.querySelectorAll(".partner-logo img").forEach(function (img) {
-    img.addEventListener("error", function () {
-      var item = img.closest(".partner-logo");
-      if (item) item.classList.add("is-empty");
-    });
-  });
-
-  /* ---------------- Scroll-reveal animation ----------------
-     Adds .is-visible to any .reveal element as it enters the viewport.
-  ------------------------------------------------------------------------- */
-  var revealEls = document.querySelectorAll(".reveal");
-  if (revealEls.length && "IntersectionObserver" in window) {
-    var revealObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
-    );
-    revealEls.forEach(function (el) {
-      revealObserver.observe(el);
-    });
-  } else {
-    revealEls.forEach(function (el) {
-      el.classList.add("is-visible");
-    });
-  }
-
   /* ---------------- Mobile navigation ---------------- */
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.querySelector(".main-nav");
@@ -130,46 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-
-  /* ---------------- Animated stat counters ---------------- */
-  var counters = document.querySelectorAll("[data-count]");
-  if (counters.length && "IntersectionObserver" in window) {
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            animateCount(entry.target);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
-    counters.forEach(function (el) {
-      observer.observe(el);
-    });
-  }
-
-  function animateCount(el) {
-    var target = parseInt(el.getAttribute("data-count"), 10) || 0;
-    var suffix = el.getAttribute("data-suffix") || "";
-    var duration = 1200;
-    var start = null;
-
-    function step(timestamp) {
-      if (!start) start = timestamp;
-      var progress = Math.min((timestamp - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - progress, 3);
-      var value = Math.floor(eased * target);
-      el.textContent = value.toLocaleString() + suffix;
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      } else {
-        el.textContent = target.toLocaleString() + suffix;
-      }
-    }
-    window.requestAnimationFrame(step);
-  }
 
   /* ---------------- Forms (Web3Forms — no backend required) ----------------
      Setup: create a free access key at https://web3forms.com (just enter
