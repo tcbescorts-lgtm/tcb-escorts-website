@@ -1,27 +1,32 @@
 /* =========================================================================
-   TCB ESCORTS LLC — Global Stylesheet (2026 redesign)
-   Dark navy / white / single red accent. Squared, professional, minimal motion.
+   TCB ESCORTS LLC — Global Stylesheet
+   Original brand palette: black / charcoal / red / yellow-free, white text,
+   single red accent. Squared, professional, minimal motion.
+   (Variable names below still say "navy-*" internally for low-risk find/replace
+   history, but the values are the site's original black/charcoal scale —
+   no blue was ever part of the brand.)
    ========================================================================= */
 
 :root {
-  /* Navy scale (primary background) */
-  --navy-950: #060f1e;
-  --navy-900: #0a1830;
-  --navy-800: #10233d;
-  --navy-700: #17304f;
+  /* Dark scale (primary background) — original black/charcoal, no navy blue */
+  --navy-950: #111113;
+  --navy-900: #1c1c20;
+  --navy-800: #2a2a30;
+  --navy-700: #34343c;
   --line: rgba(255, 255, 255, 0.12);
   --line-soft: rgba(255, 255, 255, 0.07);
 
-  /* Single accent */
-  --red: #e01b2b;
-  --red-dark: #b41320;
+  /* Single accent — original brand red, sampled from the logo */
+  --red: #ed1f2b;
+  --red-dark: #b8121c;
+  --red-darker: #8c0e15;
 
-  /* Neutrals */
+  /* Neutrals — original off-white / grays */
   --white: #ffffff;
-  --ink: #0a1830;
-  --ink-soft: #4a5568;
-  --paper: #f5f6f8;
-  --paper-border: #e2e5ea;
+  --ink: #111113;
+  --ink-soft: #55606b;
+  --paper: #f6f7f9;
+  --paper-border: #eef0f2;
 
   /* Text on navy */
   --text-primary: #ffffff;
@@ -286,6 +291,7 @@ section {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-shrink: 0;
 }
 
 .brand img {
@@ -296,6 +302,7 @@ section {
 .brand-text {
   font-family: var(--font-head);
   line-height: 1.05;
+  white-space: nowrap;
 }
 
 .brand-text strong {
@@ -309,7 +316,7 @@ section {
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 18px;
 }
 
 .main-nav a {
@@ -321,6 +328,7 @@ section {
   color: var(--text-secondary);
   position: relative;
   padding: 6px 0;
+  white-space: nowrap;
 }
 
 .main-nav a:hover {
@@ -335,7 +343,50 @@ section {
 .header-cta {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 14px;
+}
+
+/* ---------- Language switcher ---------- */
+.lang-switch {
+  display: flex;
+  align-items: center;
+}
+
+.lang-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--navy-900);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--white);
+  font-family: var(--font-head);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 8px 26px 8px 12px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  background-size: 16px;
+}
+
+.lang-select:hover,
+.lang-select:focus-visible {
+  border-color: var(--red);
+  outline: none;
+}
+
+.lang-select option {
+  background: var(--navy-900);
+  color: var(--white);
+}
+
+@media (max-width: 560px) {
+  .lang-select {
+    padding: 7px 22px 7px 9px;
+    font-size: 0.72rem;
+  }
 }
 
 .nav-toggle {
@@ -431,13 +482,6 @@ section {
   margin-bottom: 20px;
 }
 
-.hero-eyebrow::before {
-  content: "";
-  width: 26px;
-  height: 2px;
-  background: var(--red);
-}
-
 .hero h1 {
   color: var(--white);
   margin-bottom: 14px;
@@ -492,6 +536,17 @@ section {
      recognizable brand element. */
   .brand-text {
     display: none;
+  }
+  /* Longer translated CTA labels (e.g. Spanish "Solicitar Cotizacion") must
+     not push the hamburger toggle off-screen — shrink the button instead. */
+  .nav-toggle {
+    flex-shrink: 0;
+  }
+  .header-cta a.btn-primary {
+    padding: 10px 12px;
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
   }
 }
 
@@ -673,7 +728,7 @@ section {
   width: 50px;
   height: 50px;
   border-radius: var(--radius-sm);
-  background: rgba(224, 27, 43, 0.14);
+  background: rgba(237, 31, 43, 0.14);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1127,9 +1182,9 @@ section {
 }
 
 .form-status.error {
-  background: rgba(224, 27, 43, 0.08);
+  background: rgba(237, 31, 43, 0.08);
   color: var(--red-dark);
-  border: 1px solid rgba(224, 27, 43, 0.25);
+  border: 1px solid rgba(237, 31, 43, 0.25);
 }
 
 .contact-info-list {
@@ -1226,7 +1281,7 @@ section {
 
 .field-highlight {
   border-color: var(--red) !important;
-  box-shadow: 0 0 0 3px rgba(224, 27, 43, 0.14);
+  box-shadow: 0 0 0 3px rgba(237, 31, 43, 0.14);
 }
 
 /* ---------- Requirements checklist ---------- */
@@ -1594,6 +1649,160 @@ section {
 .resource-card p {
   font-size: 0.9rem;
   flex-grow: 1;
+}
+
+/* ---------- Trusted Partners — sliding logo strip ----------
+   Hidden by default (see [hidden] below); a tiny script un-hides this once
+   at least one real partner-N.png loads, and removes it entirely if none
+   do — so nothing fake or broken ever displays. ------------------------- */
+.partners-section[hidden] {
+  display: none;
+}
+
+.partners-marquee {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.partners-track {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: max-content;
+  animation: partners-scroll 30s linear infinite;
+}
+
+.partners-marquee:hover .partners-track {
+  animation-play-state: paused;
+}
+
+@keyframes partners-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.partner-logo {
+  flex-shrink: 0;
+  width: 170px;
+  height: 88px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--navy-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 20px;
+}
+
+.partner-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.72;
+  transition: filter var(--transition), opacity var(--transition);
+}
+
+.partner-logo:hover img {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .partner-logo {
+    width: 132px;
+    height: 72px;
+    padding: 12px 16px;
+  }
+  .partners-track {
+    gap: 16px;
+  }
+}
+
+/* ---------- Certifications carousel ---------- */
+.cert-carousel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cert-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding: 4px 2px;
+}
+
+.cert-track::-webkit-scrollbar {
+  display: none;
+}
+
+.cert-slide {
+  flex: 0 0 220px;
+  scroll-snap-align: start;
+}
+
+@media (max-width: 640px) {
+  .cert-slide {
+    flex-basis: 74vw;
+  }
+}
+
+.cert-nav {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--navy-900);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.cert-nav:hover {
+  border-color: var(--red);
+  background: var(--navy-950);
+}
+
+.cert-nav svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.cert-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.cert-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-sm);
+  background: var(--line);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.cert-dot.active {
+  background: var(--red);
 }
 
 /* ---------- Reveal — kept static; no scroll-triggered motion ---------- */

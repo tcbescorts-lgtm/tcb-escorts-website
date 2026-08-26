@@ -31,15 +31,21 @@
       <span class="brand-text"><strong>TCB Escorts LLC</strong></span>
     </a>
     <nav class="main-nav" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="about.html">About</a>
-      <a href="service-area.html">Service Area</a>
-      <a href="careers.html" class="active">Careers</a>
-      <a href="contact.html">Contact</a>
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="services.html" data-i18n="nav.services">Services</a>
+      <a href="about.html" data-i18n="nav.about">About</a>
+      <a href="service-area.html" data-i18n="nav.serviceArea">Service Area</a>
+      <a href="careers.html" class="active" data-i18n="nav.careers">Careers</a>
+      <a href="contact.html" data-i18n="nav.contact">Contact</a>
     </nav>
     <div class="header-cta">
-      <a href="contact.html#quote" class="btn btn-primary">Get a Quote</a>
+      <div class="lang-switch">
+        <select class="lang-select" aria-label="Select language">
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+        </select>
+      </div>
+      <a href="contact.html#quote" class="btn btn-primary" data-i18n="cta.getQuote">Get a Quote</a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -50,9 +56,9 @@
 
   <section class="page-hero">
     <div class="container">
-      <div class="breadcrumb">Home / Careers</div>
-      <h1>Join the TCB Escorts Network</h1>
-      <p>We're always looking for certified, professional pilot car drivers to join our nationwide network. Consistent loads, straightforward dispatch, and a company that takes safety as seriously as you do.</p>
+      <div class="breadcrumb" data-i18n="breadcrumb.careers">Home / Careers</div>
+      <h1 data-i18n="page.careers.h1">Join the TCB Escorts Network</h1>
+      <p data-i18n="page.careers.lead">We're always looking for certified, professional pilot car drivers to join our nationwide network. Consistent loads, straightforward dispatch, and a company that takes safety as seriously as you do.</p>
     </div>
   </section>
 
@@ -133,33 +139,33 @@
 
           <div class="form-row">
             <div class="field">
-              <label for="c-name">Full Name</label>
+              <label for="c-name" data-i18n="form.fullName">Full Name</label>
               <input type="text" id="c-name" name="Full Name" required />
             </div>
             <div class="field">
-              <label for="c-phone">Phone</label>
+              <label for="c-phone" data-i18n="form.phone">Phone</label>
               <input type="tel" id="c-phone" name="Phone" required />
             </div>
           </div>
 
           <div class="field">
-            <label for="c-email">Email</label>
+            <label for="c-email" data-i18n="form.email">Email</label>
             <input type="email" id="c-email" name="Email" required />
           </div>
 
           <div class="form-row">
             <div class="field">
-              <label for="c-states">States Certified In</label>
+              <label for="c-states" data-i18n="form.statesCertified">States Certified In</label>
               <input type="text" id="c-states" name="States Certified In" placeholder="e.g. MS, AL, TN" required />
             </div>
             <div class="field">
-              <label for="c-years">Years of Experience</label>
+              <label for="c-years" data-i18n="form.yearsExperience">Years of Experience</label>
               <input type="text" id="c-years" name="Years of Experience" required />
             </div>
           </div>
 
           <div class="field">
-            <label for="c-positions">Positions You're Certified For</label>
+            <label for="c-positions" data-i18n="form.positionsCertified">Positions You're Certified For</label>
             <select id="c-positions" name="Positions Certified For" required>
               <option value="">Select all that generally apply</option>
               <option>Lead</option>
@@ -171,11 +177,11 @@
           </div>
 
           <div class="field">
-            <label for="c-message">Additional Details</label>
+            <label for="c-message" data-i18n="form.additionalDetails">Additional Details</label>
             <textarea id="c-message" name="Additional Details" placeholder="Equipment you run, availability, coverage area, etc."></textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block" data-label="Submit Application">Submit Application</button>
+          <button type="submit" class="btn btn-primary btn-block" data-i18n="form.submitApplication" data-label="Submit Application">Submit Application</button>
           <div class="form-status"></div>
           <p class="form-note">By submitting, you agree to be contacted by TCB Escorts LLC regarding network opportunities.</p>
         </form>
@@ -204,34 +210,34 @@
           <img src="logo.png" alt="TCB Escorts LLC logo" width="52" height="52" />
           <span class="brand-text"><strong>TCB Escorts LLC</strong></span>
         </a>
-        <div class="footer-tagline">Big Loads. Safe Roads.</div>
-        <p>Nationwide Pilot Car &amp; Oversize Load Escort Services.</p>
+        <div class="footer-tagline" data-i18n="footer.tagline">Big Loads. Safe Roads.</div>
+        <p data-i18n-html="footer.desc">Nationwide Pilot Car &amp; Oversize Load Escort Services.</p>
         <address>4780 I-55 North<br />Jackson, MS 39211</address>
       </div>
       <div class="footer-col">
-        <h4>Company</h4>
+        <h4 data-i18n="footer.company">Company</h4>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="service-area.html">Service Area</a></li>
-          <li><a href="careers.html">Careers</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+          <li><a href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a href="service-area.html" data-i18n="nav.serviceArea">Service Area</a></li>
+          <li><a href="careers.html" data-i18n="nav.careers">Careers</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Contact</h4>
+        <h4 data-i18n="footer.contactHeading">Contact</h4>
         <ul>
           <li><a href="tel:+16016339096">(601) 633-9096</a></li>
           <li><a href="mailto:admin@tcbescorts.com">admin@tcbescorts.com</a></li>
           <li><a href="https://www.instagram.com/tcbescorts/" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="contact.html#quote" class="btn btn-primary btn-sm" style="margin-top:6px;">Get a Quote</a></li>
+          <li><a href="contact.html#quote" class="btn btn-primary btn-sm" style="margin-top:6px;" data-i18n="cta.getQuote">Get a Quote</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; <span id="year">2026</span> TCB Escorts LLC. All rights reserved.</span>
-      <span>Nationwide Pilot Car &amp; Oversize Load Escort Services</span>
+      <span>&copy; <span id="year">2026</span> TCB Escorts LLC. <span data-i18n="footer.rights">All rights reserved.</span></span>
+      <span data-i18n-html="footer.desc2">Nationwide Pilot Car &amp; Oversize Load Escort Services</span>
     </div>
   </div>
 </footer>
@@ -241,6 +247,7 @@
 </a>
 
 <button class="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg></button>
+<script src="i18n.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

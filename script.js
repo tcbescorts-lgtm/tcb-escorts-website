@@ -138,7 +138,9 @@ document.addEventListener("DOMContentLoaded", function () {
         .finally(function () {
           if (submitBtn) {
             submitBtn.disabled = false;
-            submitBtn.textContent = submitBtn.getAttribute("data-label") || "Submit Request";
+            var i18nKey = submitBtn.getAttribute("data-i18n");
+            var translated = i18nKey && window.TCB_I18N ? window.TCB_I18N.translate(i18nKey) : null;
+            submitBtn.textContent = translated || submitBtn.getAttribute("data-label") || "Submit Request";
           }
         });
     });
@@ -180,5 +182,118 @@ document.addEventListener("DOMContentLoaded", function () {
   var yearEl = document.getElementById("year");
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
+  }
+
+  /* ---------------- Trusted Partners — logo loader ----------------
+     The section starts [hidden]. Each real logo file that loads keeps its
+     tile (and its duplicate, for the seamless loop); any that 404 are
+     removed. If zero real logos exist yet, the whole section is removed —
+     nothing fake or broken ever shows. Drop partner-1.png..partner-8.png
+     into the project root to activate it.
+  ------------------------------------------------------------------------- */
+  var partnersSection = document.getElementById("partners");
+  if (partnersSection) {
+    var primaryTiles = Array.prototype.slice.call(
+      partnersSection.querySelectorAll(".partner-logo:not([aria-hidden])")
+    );
+    var total = primaryTiles.length;
+    var settled = 0;
+    var loadedCount = 0;
+
+    function settleOne() {
+      settled++;
+      if (settled === total) {
+        if (loadedCount > 0) {
+          partnersSection.hidden = false;
+        } else {
+          partnersSection.remove();
+        }
+      }
+    }
+
+    if (total === 0) {
+      partnersSection.remove();
+    } else {
+      primaryTiles.forEach(function (tile) {
+        var img = tile.querySelector("img");
+        if (!img) {
+          settleOne();
+          return;
+        }
+        var src = img.getAttribute("src");
+
+        function onOk() {
+          loadedCount++;
+          settleOne();
+        }
+
+        function onFail() {
+          tile.remove();
+          var dup = partnersSection.querySelector('.partner-logo[aria-hidden] img[src="' + src + '"]');
+          if (dup && dup.closest(".partner-logo")) {
+            dup.closest(".partner-logo").remove();
+          }
+          settleOne();
+        }
+
+        img.addEventListener("load", onOk, { once: true });
+        img.addEventListener("error", onFail, { once: true });
+
+        if (img.complete) {
+          if (img.naturalWidth === 0) {
+            onFail();
+          } else {
+            onOk();
+          }
+        }
+      });
+    }
+  }
+
+  /* ---------------- Certifications carousel ---------------- */
+  var certTrack = document.getElementById("cert-track");
+  if (certTrack) {
+    var certDotsWrap = document.getElementById("cert-dots");
+    var certPrev = document.getElementById("cert-prev");
+    var certNext = document.getElementById("cert-next");
+    var slides = Array.prototype.slice.call(certTrack.children);
+
+    slides.forEach(function (slide, i) {
+      var dot = document.createElement("button");
+      dot.className = "cert-dot" + (i === 0 ? " active" : "");
+      dot.setAttribute("aria-label", "Go to slide " + (i + 1));
+      dot.addEventListener("click", function () {
+        slide.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+      });
+      if (certDotsWrap) certDotsWrap.appendChild(dot);
+    });
+
+    var certDots = certDotsWrap ? Array.prototype.slice.call(certDotsWrap.children) : [];
+
+    function scrollStep(dir) {
+      var slide = slides[0];
+      if (!slide) return;
+      var style = window.getComputedStyle(certTrack);
+      var gap = parseFloat(style.columnGap || style.gap || "16") || 16;
+      var amount = slide.getBoundingClientRect().width + gap;
+      certTrack.scrollBy({ left: dir * amount, behavior: "smooth" });
+    }
+
+    if (certPrev) certPrev.addEventListener("click", function () { scrollStep(-1); });
+    if (certNext) certNext.addEventListener("click", function () { scrollStep(1); });
+
+    var scrollTimer;
+    certTrack.addEventListener("scroll", function () {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(function () {
+        var style = window.getComputedStyle(certTrack);
+        var gap = parseFloat(style.columnGap || style.gap || "16") || 16;
+        var slideWidth = slides[0].getBoundingClientRect().width + gap;
+        var index = Math.round(certTrack.scrollLeft / slideWidth);
+        certDots.forEach(function (d, i) {
+          d.classList.toggle("active", i === index);
+        });
+      }, 100);
+    });
   }
 });
