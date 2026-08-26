@@ -184,6 +184,72 @@ document.addEventListener("DOMContentLoaded", function () {
     yearEl.textContent = new Date().getFullYear();
   }
 
+  /* ---------------- Hero background photo/video loader ----------------
+     The hero ships with a dark gradient + line-texture background (see
+     .hero-media in style.css) so it looks intentional on its own. Drop a
+     hero-bg.mp4 (muted/looped, no audio needed) and/or hero-bg.jpg into the
+     project root and this fades the real media in automatically — no code
+     changes required. Video is preferred over the still photo when both
+     are present; if neither exists, the gradient stays exactly as-is.
+  ------------------------------------------------------------------------- */
+  var heroMedia = document.getElementById("hero-media");
+  if (heroMedia) {
+    var heroVideo = document.getElementById("hero-bg-video");
+    var heroImg = document.getElementById("hero-bg-img");
+
+    function tryHeroVideo() {
+      if (!heroVideo) return;
+      var source = document.createElement("source");
+      source.src = "hero-bg.mp4";
+      source.type = "video/mp4";
+      var settled = false;
+      function onReady() {
+        if (settled) return;
+        settled = true;
+        heroVideo.classList.add("is-visible");
+        heroVideo.play().catch(function () {
+          /* Autoplay can be blocked in rare cases; the gradient remains a
+             perfectly good background if playback doesn't start. */
+        });
+      }
+      function onFail() {
+        if (settled) return;
+        settled = true;
+        heroVideo.remove();
+      }
+      heroVideo.addEventListener("loadeddata", onReady, { once: true });
+      heroVideo.addEventListener("error", onFail, { once: true });
+      source.addEventListener("error", onFail, { once: true });
+      heroVideo.appendChild(source);
+      heroVideo.load();
+    }
+
+    function tryHeroImage() {
+      if (!heroImg) return;
+      heroImg.addEventListener(
+        "load",
+        function () {
+          heroImg.classList.add("is-visible");
+        },
+        { once: true }
+      );
+      heroImg.addEventListener(
+        "error",
+        function () {
+          heroImg.remove();
+        },
+        { once: true }
+      );
+      heroImg.src = "hero-bg.jpg";
+      if (heroImg.complete && heroImg.naturalWidth > 0) {
+        heroImg.classList.add("is-visible");
+      }
+    }
+
+    tryHeroVideo();
+    tryHeroImage();
+  }
+
   /* ---------------- Trusted Partners — logo loader ----------------
      The section starts [hidden]. Each real logo file that loads keeps its
      tile (and its duplicate, for the seamless loop); any that 404 are

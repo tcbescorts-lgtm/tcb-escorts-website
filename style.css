@@ -196,6 +196,25 @@ section {
   color: var(--red-dark);
 }
 
+.bg-white {
+  background: var(--white);
+}
+
+.bg-white h1,
+.bg-white h2,
+.bg-white h3,
+.bg-white h4 {
+  color: var(--ink);
+}
+
+.bg-white p {
+  color: var(--ink-soft);
+}
+
+.bg-white .section-tag {
+  color: var(--red-dark);
+}
+
 /* ---------- Buttons ---------- */
 .btn {
   display: inline-flex;
@@ -442,49 +461,100 @@ section {
   display: block;
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero — full-bleed photo/video background ----------
+   Structure: .hero > .hero-media (bg image/video, absolutely filled) +
+   .hero-overlay (gradient for text contrast) + .container (text, above both).
+   .hero-media has a dark, textured gradient of its own as the base layer,
+   so the section looks intentional even before a real photo is dropped in.
+   Drop a real photo in as hero-bg.jpg (1920x1080+ recommended) — script.js
+   detects it and fades it in automatically; no code changes needed. A
+   hero-bg.mp4 (muted, looped, no audio) takes priority over the still photo
+   if both are present. ------------------------------------------------- */
 .hero {
   position: relative;
-  background: var(--navy-950);
   color: var(--white);
   overflow: hidden;
-  padding: 96px 0 76px;
+  min-height: 640px;
+  display: flex;
+  align-items: center;
+  padding: 150px 0 100px;
   border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse 90% 70% at 20% 15%, rgba(237, 31, 43, 0.16), transparent 60%),
+    linear-gradient(180deg, #0c0c0e 0%, #16161a 45%, #0c0c0e 100%);
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-media img,
+.hero-media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--hero-media-position, center 58%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.hero-media img {
+  z-index: 0;
+}
+
+.hero-media video {
+  /* Wins over the still photo when both hero-bg.mp4 and hero-bg.jpg exist. */
+  z-index: 1;
+}
+
+.hero-media img.is-visible,
+.hero-media video.is-visible {
+  opacity: 1;
+}
+
+/* Faint road-line texture on the base gradient, standing in for a photo
+   until one is provided — reads as an intentional dark surface, not an
+   empty/broken background. */
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    100deg,
+    transparent 0,
+    transparent 120px,
+    rgba(255, 255, 255, 0.035) 120px,
+    rgba(255, 255, 255, 0.035) 123px
+  );
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(9, 9, 10, 0.88) 0%, rgba(9, 9, 10, 0.62) 42%, rgba(9, 9, 10, 0.28) 75%, rgba(9, 9, 10, 0.15) 100%),
+    linear-gradient(0deg, rgba(9, 9, 10, 0.55) 0%, rgba(9, 9, 10, 0) 45%);
 }
 
 .hero .container {
   position: relative;
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 48px;
-  align-items: center;
-}
-
-@media (max-width: 960px) {
-  .hero .container {
-    grid-template-columns: 1fr;
-  }
+  z-index: 2;
 }
 
 .hero-content {
   max-width: 620px;
 }
 
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-head);
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.76rem;
-  color: var(--red);
-  margin-bottom: 20px;
-}
-
 .hero h1 {
   color: var(--white);
   margin-bottom: 14px;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
 .hero-tagline {
@@ -510,7 +580,22 @@ section {
 
 @media (max-width: 640px) {
   .hero {
-    padding: 44px 0 48px;
+    min-height: 560px;
+    padding: 120px 0 56px;
+  }
+  .hero-media img,
+  .hero-media video {
+    /* The narrow mobile frame only shows a slice of the wide source photo —
+       shift right/down to keep the truck and load in view rather than a
+       centered crop that mostly shows sky and trees. Re-tune if the photo
+       changes. */
+    object-position: var(--hero-media-position-mobile, 70% 62%);
+  }
+  .hero-overlay {
+    /* On mobile the text column spans full width over the photo, so the
+       overlay needs even, edge-to-edge contrast rather than a side gradient. */
+    background:
+      linear-gradient(180deg, rgba(9, 9, 10, 0.35) 0%, rgba(9, 9, 10, 0.72) 55%, rgba(9, 9, 10, 0.9) 100%);
   }
   .hero-actions {
     flex-direction: column;
@@ -548,30 +633,6 @@ section {
     letter-spacing: 0.02em;
     white-space: nowrap;
   }
-}
-
-/* Hero graphic panel — simple route/load illustration, no stock photography */
-.hero-graphic {
-  position: relative;
-  border: 1px solid var(--line);
-  background: var(--navy-900);
-  border-radius: var(--radius);
-  aspect-ratio: 4/3.3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-@media (max-width: 960px) {
-  .hero-graphic {
-    display: none;
-  }
-}
-
-.hero-graphic svg {
-  width: 100%;
-  height: auto;
 }
 
 /* ---------- Stats strip ---------- */
@@ -1654,7 +1715,10 @@ section {
 /* ---------- Trusted Partners — sliding logo strip ----------
    Hidden by default (see [hidden] below); a tiny script un-hides this once
    at least one real partner-N.png loads, and removes it entirely if none
-   do — so nothing fake or broken ever displays. ------------------------- */
+   do — so nothing fake or broken ever displays. White background specifically
+   so both dark- and light-colored partner logos stay legible; each logo
+   keeps its own natural aspect ratio (height-constrained, width auto)
+   rather than being forced into identical boxes. ------------------------ */
 .partners-section[hidden] {
   display: none;
 }
@@ -1669,9 +1733,9 @@ section {
 .partners-track {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 56px;
   width: max-content;
-  animation: partners-scroll 30s linear infinite;
+  animation: partners-scroll 32s linear infinite;
 }
 
 .partners-marquee:hover .partners-track {
@@ -1689,39 +1753,33 @@ section {
 
 .partner-logo {
   flex-shrink: 0;
-  width: 170px;
-  height: 88px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--navy-900);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 20px;
+  height: 64px;
 }
 
 .partner-logo img {
-  max-width: 100%;
-  max-height: 100%;
+  height: 100%;
+  width: auto;
+  max-width: 190px;
   object-fit: contain;
-  filter: grayscale(1);
-  opacity: 0.72;
-  transition: filter var(--transition), opacity var(--transition);
+  transition: transform var(--transition);
 }
 
 .partner-logo:hover img {
-  filter: grayscale(0);
-  opacity: 1;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 640px) {
   .partner-logo {
-    width: 132px;
-    height: 72px;
-    padding: 12px 16px;
+    height: 46px;
+  }
+  .partner-logo img {
+    max-width: 140px;
   }
   .partners-track {
-    gap: 16px;
+    gap: 36px;
   }
 }
 
