@@ -146,27 +146,48 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* ---------------- Pickup location prefill (Coverage Map -> Quote form) ----------------
-     service-area.html links each state to contact.html?pickup=STATE#quote. On load here,
-     we fill the Pickup Location field, show a brief confirmation, and highlight the field.
-     The page already scrolls to #quote via CSS scroll-behavior: smooth.
+  /* ---------------- Prefill quote form from links (Coverage Map / Service cards) ----------------
+     service-area.html links each state to contact.html?pickup=STATE#quote, and the homepage
+     service cards link to contact.html?position=NAME#quote. On load here, we fill whichever
+     field(s) are present, show a confirmation, and highlight the field(s). The page already
+     scrolls to #quote via CSS scroll-behavior: smooth.
   ------------------------------------------------------------------------- */
-  var pickupParam = new URLSearchParams(window.location.search).get("pickup");
-  if (pickupParam) {
-    var pickupField = document.getElementById("q-pickup");
-    var pickupBanner = document.getElementById("pickup-confirm");
-    if (pickupField) {
-      pickupField.value = pickupParam;
-      pickupField.classList.add("field-highlight");
-      setTimeout(function () {
-        pickupField.classList.remove("field-highlight");
-      }, 2500);
+  var quoteParams = new URLSearchParams(window.location.search);
+  var pickupParam = quoteParams.get("pickup");
+  var positionParam = quoteParams.get("position");
+  var pickupField = document.getElementById("q-pickup");
+  var positionField = document.getElementById("q-position");
+  var pickupBanner = document.getElementById("pickup-confirm");
+  var confirmMessages = [];
+
+  function highlightField(field) {
+    field.classList.add("field-highlight");
+    setTimeout(function () {
+      field.classList.remove("field-highlight");
+    }, 2500);
+  }
+
+  if (pickupParam && pickupField) {
+    pickupField.value = pickupParam;
+    highlightField(pickupField);
+    confirmMessages.push("pickup location set to " + pickupParam);
+  }
+
+  if (positionParam && positionField) {
+    var positionMatches = Array.prototype.some.call(positionField.options, function (opt) {
+      return opt.value === positionParam;
+    });
+    if (positionMatches) {
+      positionField.value = positionParam;
+      highlightField(positionField);
+      confirmMessages.push("escort position set to " + positionParam);
     }
-    if (pickupBanner) {
-      pickupBanner.textContent =
-        "Pickup location set to " + pickupParam + ". Complete the form below to request your quote.";
-      pickupBanner.hidden = false;
-    }
+  }
+
+  if (confirmMessages.length && pickupBanner) {
+    pickupBanner.textContent =
+      "We've " + confirmMessages.join(" and ") + ". Complete the form below to request your quote.";
+    pickupBanner.hidden = false;
   }
 
   /* ---------------- Set active nav link ---------------- */
@@ -362,4 +383,20 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 100);
     });
   }
+
+  /* ---------------- Service cards -> booking prefill ----------------
+     Each service card's "Book This Service" link already points to
+     contact.html?position=NAME#quote (handled above on that page). Making
+     the whole card clickable (not just the link) gives a larger, easier
+     tap target, especially on mobile, while the link itself remains the
+     single source of truth for the destination URL. ---------------------- */
+  document.querySelectorAll(".service-card").forEach(function (card) {
+    var link = card.querySelector('a.card-link[href*="position="]');
+    if (!link) return;
+    card.classList.add("service-card-clickable");
+    card.addEventListener("click", function (e) {
+      if (e.target.closest("a")) return;
+      window.location.href = link.getAttribute("href");
+    });
+  });
 });

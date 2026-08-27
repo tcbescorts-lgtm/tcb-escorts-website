@@ -177,6 +177,21 @@ section {
   background: var(--navy-950);
 }
 
+.bg-deep h1,
+.bg-deep h2,
+.bg-deep h3,
+.bg-deep h4 {
+  color: var(--white);
+}
+
+.bg-deep p {
+  color: var(--text-secondary);
+}
+
+.bg-deep .section-tag {
+  color: var(--red);
+}
+
 .bg-paper {
   background: var(--paper);
 }
@@ -557,19 +572,54 @@ section {
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
-.hero-tagline {
-  font-family: var(--font-body);
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  margin: 0 0 18px;
+.hero-eyebrow {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 16px;
 }
 
-.hero p.lead {
-  font-size: 0.98rem;
-  color: var(--text-secondary);
-  max-width: 520px;
-  margin-bottom: 34px;
+.hero-tagline {
+  font-family: var(--font-body);
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  max-width: 480px;
+  margin: 0 0 26px;
+}
+
+.hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 34px;
+}
+
+.hero-trust li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-head);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.hero-trust li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--red);
+  flex-shrink: 0;
 }
 
 .hero-actions {
@@ -670,7 +720,7 @@ section {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--ink-soft);
-  margin-top: 6px;
+  margin-top: 10px;
 }
 
 @media (max-width: 640px) {
@@ -786,6 +836,10 @@ section {
 
 .service-card:hover {
   border-color: var(--red);
+}
+
+.service-card-clickable {
+  cursor: pointer;
 }
 
 .icon-box {
@@ -1057,9 +1111,21 @@ section {
 
 /* ---------- Certifications ---------- */
 .cert-strip {
-  background: var(--paper);
+  background: var(--navy-950);
   border-top: 1px solid var(--paper-border);
   border-bottom: 1px solid var(--paper-border);
+}
+
+.cert-strip h2 {
+  color: var(--white);
+}
+
+.cert-strip .section-head p {
+  color: var(--text-secondary);
+}
+
+.cert-strip .section-tag {
+  color: var(--red);
 }
 
 .cert-grid {
@@ -1075,8 +1141,8 @@ section {
 }
 
 .cert-card {
-  background: var(--white);
-  border: 1px solid var(--paper-border);
+  background: var(--navy-900);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 22px 18px;
   text-align: center;
@@ -1087,7 +1153,7 @@ section {
 }
 
 .cert-card h3 {
-  color: var(--ink);
+  color: var(--white);
   font-size: 0.94rem;
   margin-bottom: 4px;
 }
@@ -1307,31 +1373,71 @@ section {
   margin-bottom: 0;
 }
 
-/* ---------- State pills (service area) ---------- */
-.state-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+/* ---------- Interactive USA coverage map ----------
+   All 50 states render red — TCB Escorts services all 50 states, so there
+   are no "uncovered" states to show in gray. Each state is wrapped in a
+   real <a href="contact.html?pickup=STATE#quote"> element (not a JS click
+   handler), so click, keyboard (Tab + Enter/Space), and screen-reader
+   behavior all work natively for free, reusing the exact prefill mechanism
+   already proven on the quote form. ------------------------------------- */
+.coverage-map-wrap {
+  max-width: 760px;
+  margin: 0 auto;
 }
 
-.state-pill {
-  border: 1px solid var(--paper-border);
-  border-radius: var(--radius-sm);
-  padding: 9px 18px;
+.coverage-map-wrap svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.us-state {
+  fill: var(--red);
+  stroke: var(--white);
+  stroke-width: 1.4;
+  transition: fill var(--transition);
+  cursor: pointer;
+}
+
+.us-state-link:hover .us-state,
+.us-state-link:focus-visible .us-state {
+  fill: var(--red-dark);
+}
+
+.us-state-link:focus-visible .us-state {
+  stroke: var(--ink);
+  stroke-width: 2.2;
+}
+
+.us-state-link {
+  outline: none;
+}
+
+.map-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
   font-family: var(--font-head);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   letter-spacing: 0.03em;
   color: var(--ink-soft);
-  background: var(--white);
-  cursor: pointer;
-  transition: border-color var(--transition), color var(--transition), background var(--transition);
 }
 
-.state-pill:hover,
-.state-pill:focus-visible {
-  border-color: var(--red);
-  color: var(--red-dark);
-  background: var(--paper);
+.map-legend .swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: var(--red);
+  flex-shrink: 0;
+}
+
+.map-hint {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  margin-top: 10px;
 }
 
 /* ---------- Pickup-location confirmation banner ---------- */
@@ -1370,11 +1476,11 @@ section {
 
 /* ---------- FAQ ---------- */
 .faq-item {
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--paper-border);
 }
 
 .faq-item:first-child {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--paper-border);
 }
 
 .faq-q {
@@ -1390,7 +1496,7 @@ section {
   font-family: var(--font-head);
   font-size: 1rem;
   font-weight: 500;
-  color: var(--white);
+  color: var(--ink);
 }
 
 .faq-q svg {

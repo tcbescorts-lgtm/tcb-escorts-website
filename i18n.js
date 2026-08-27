@@ -25,10 +25,13 @@
       "footer.contactHeading": "Contact",
       "footer.rights": "All rights reserved.",
 
-      "hero.eyebrow": "Nationwide &middot; 24/7 Dispatch",
+      "hero.eyebrow": "Nationwide Pilot Car Escort Services",
       "hero.h1": "Big Loads.<br />Safe Roads.",
-      "hero.tagline": "Professional Pilot Car &amp; Oversize Load Escort Services",
+      "hero.tagline": "Professional pilot car and oversize-load escort services for carriers, brokers, and owner-operators.",
       "hero.lead": "Nationwide coverage &bull; Certified escorts &bull; 24/7 dispatch. TCB Escorts LLC delivers Lead, Chase, High Pole, Steer, and Route Survey escorts for carriers, brokers, and owner-operators across all 50 states.",
+      "hero.trust.coverage": "Nationwide Coverage",
+      "hero.trust.certified": "Certified Escorts",
+      "hero.trust.dispatch": "24/7 Dispatch",
 
       "stats.loads": "Loads Escorted",
       "stats.partners": "Carrier &amp; Broker Partners",
@@ -48,7 +51,7 @@
       "service.steer.desc": "Guides the load through tight turns and congested areas where extra maneuvering support is critical.",
       "service.routesurvey.title": "Route Survey",
       "service.routesurvey.desc": "Pre-trip route analysis to confirm clearances, permits, and turn radii before moving day.",
-      "learnMore": "Learn More &rarr;",
+      "learnMore": "Book This Service &rarr;",
 
       "how.tag": "Process",
       "how.h2": "How It Works",
@@ -165,10 +168,13 @@
       "footer.contactHeading": "Contacto",
       "footer.rights": "Todos los derechos reservados.",
 
-      "hero.eyebrow": "Cobertura Nacional &middot; Despacho 24/7",
+      "hero.eyebrow": "Servicios Nacionales de Vehículo Piloto",
       "hero.h1": "Cargas Grandes.<br />Caminos Seguros.",
-      "hero.tagline": "Servicios Profesionales de Vehículo Piloto y Escolta de Cargas Sobredimensionadas",
+      "hero.tagline": "Servicios profesionales de vehículo piloto y escolta de cargas sobredimensionadas para transportistas, corredores y operadores independientes.",
       "hero.lead": "Cobertura nacional &bull; Escoltas certificados &bull; Despacho 24/7. TCB Escorts LLC ofrece escoltas Lead, Chase, High Pole, Steer y Route Survey para transportistas, corredores y operadores independientes en los 50 estados.",
+      "hero.trust.coverage": "Cobertura Nacional",
+      "hero.trust.certified": "Escoltas Certificados",
+      "hero.trust.dispatch": "Despacho 24/7",
 
       "stats.loads": "Cargas Escoltadas",
       "stats.partners": "Transportistas y Corredores Asociados",
@@ -188,7 +194,7 @@
       "service.steer.desc": "Guía la carga en curvas cerradas y áreas congestionadas donde se necesita apoyo adicional de maniobra.",
       "service.routesurvey.title": "Estudio de Ruta",
       "service.routesurvey.desc": "Análisis previo de la ruta para confirmar alturas, permisos y radios de giro antes del día de la mudanza.",
-      "learnMore": "Más Información &rarr;",
+      "learnMore": "Reservar Este Servicio &rarr;",
 
       "how.tag": "Proceso",
       "how.h2": "Cómo Funciona",
