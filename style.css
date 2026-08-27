@@ -62,8 +62,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  color: var(--text-primary);
-  background: var(--navy-900);
+  color: var(--ink);
+  background: var(--white);
   line-height: 1.6;
   font-size: 16px;
   overflow-x: hidden;
@@ -101,7 +101,7 @@ h4 {
   text-transform: uppercase;
   letter-spacing: 0.02em;
   line-height: 1.15;
-  color: var(--text-primary);
+  color: var(--ink);
   font-weight: 600;
 }
 
@@ -119,7 +119,7 @@ h3 {
 }
 
 p {
-  color: var(--text-secondary);
+  color: var(--ink-soft);
 }
 
 .container {
@@ -170,7 +170,7 @@ section {
 
 /* ---------- Section surfaces (alternating panels, no gradients) ---------- */
 .bg-alt {
-  background: var(--navy-800);
+  background: var(--paper);
 }
 
 .bg-deep {
@@ -586,10 +586,10 @@ section {
   .hero-media img,
   .hero-media video {
     /* The narrow mobile frame only shows a slice of the wide source photo —
-       shift right/down to keep the truck and load in view rather than a
-       centered crop that mostly shows sky and trees. Re-tune if the photo
-       changes. */
-    object-position: var(--hero-media-position-mobile, 70% 62%);
+       shift left to keep the pilot/escort vehicle as the visual focus
+       (it sits left-of-frame in the source photo), rather than a centered
+       crop that favors the truck and load. Re-tune if the photo changes. */
+    object-position: var(--hero-media-position-mobile, 18% 58%);
   }
   .hero-overlay {
     /* On mobile the text column spans full width over the photo, so the
@@ -637,8 +637,8 @@ section {
 
 /* ---------- Stats strip ---------- */
 .stats-strip {
-  background: var(--navy-950);
-  border-bottom: 1px solid var(--line);
+  background: var(--white);
+  border-bottom: 1px solid var(--paper-border);
 }
 
 .stats-grid {
@@ -650,7 +650,7 @@ section {
 .stats-grid .stat {
   text-align: center;
   padding: 34px 12px;
-  border-left: 1px solid var(--line);
+  border-left: 1px solid var(--paper-border);
 }
 
 .stats-grid .stat:first-child {
@@ -661,7 +661,7 @@ section {
   display: block;
   font-family: var(--font-head);
   font-size: clamp(1.5rem, 2.6vw, 2rem);
-  color: var(--white);
+  color: var(--red);
 }
 
 .stats-grid .stat span {
@@ -669,7 +669,7 @@ section {
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--text-tertiary);
+  color: var(--ink-soft);
   margin-top: 6px;
 }
 
@@ -679,7 +679,7 @@ section {
   }
   .stats-grid .stat {
     border-left: none;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid var(--paper-border);
   }
   .stats-grid .stat:first-child,
   .stats-grid .stat:nth-child(2) {
@@ -689,8 +689,8 @@ section {
 
 /* Legacy stat-bar (used on interior pages) mapped to the same look */
 .stat-bar {
-  background: var(--navy-950);
-  border-bottom: 1px solid var(--line);
+  background: var(--white);
+  border-bottom: 1px solid var(--paper-border);
 }
 
 .stat-grid {
@@ -701,7 +701,7 @@ section {
 .stat-card {
   text-align: center;
   padding: 34px 12px;
-  border-left: 1px solid var(--line);
+  border-left: 1px solid var(--paper-border);
 }
 
 .stat-card:first-child {
@@ -712,7 +712,7 @@ section {
   display: block;
   font-family: var(--font-head);
   font-size: 1.9rem;
-  color: var(--white);
+  color: var(--red);
 }
 
 .stat-card span {
@@ -720,7 +720,7 @@ section {
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--text-tertiary);
+  color: var(--ink-soft);
   margin-top: 6px;
 }
 
@@ -730,7 +730,7 @@ section {
   }
   .stat-card {
     border-left: none;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid var(--paper-border);
   }
   .stat-card:first-child,
   .stat-card:nth-child(2) {
@@ -774,15 +774,18 @@ section {
 }
 
 .service-card {
-  background: var(--navy-800);
-  border: 1px solid var(--line);
+  background: var(--white);
+  border: 1px solid var(--paper-border);
   border-radius: var(--radius);
   padding: 30px 26px;
-  transition: border-color var(--transition), background var(--transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
 
 .service-card:hover {
-  border-color: rgba(255, 255, 255, 0.28);
+  border-color: var(--red);
 }
 
 .icon-box {
@@ -821,11 +824,13 @@ section {
   font-weight: 600;
   display: inline-flex;
   align-items: center;
+  margin-top: auto;
+  padding-top: 14px;
   gap: 6px;
 }
 
 .card-link:hover {
-  color: var(--white);
+  color: var(--red-dark);
 }
 
 .feature-row {
@@ -833,7 +838,7 @@ section {
   gap: 18px;
   align-items: flex-start;
   padding: 22px 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--paper-border);
 }
 
 .feature-row:last-child {
@@ -924,7 +929,7 @@ section {
   display: flex;
   gap: 22px;
   padding: 24px 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--paper-border);
 }
 
 .step:last-child {
@@ -937,8 +942,7 @@ section {
   width: 46px;
   height: 46px;
   border-radius: var(--radius-sm);
-  background: var(--navy-950);
-  border: 1px solid var(--line);
+  background: var(--red);
   color: var(--white);
   display: flex;
   align-items: center;
@@ -1001,7 +1005,7 @@ section {
   font-family: var(--font-head);
   font-size: 0.98rem;
   letter-spacing: 0.02em;
-  color: var(--white);
+  color: var(--ink);
   text-transform: uppercase;
 }
 
@@ -1021,7 +1025,7 @@ section {
 
 .serve-item {
   padding: 4px 32px;
-  border-left: 1px solid var(--line);
+  border-left: 1px solid var(--paper-border);
   text-align: left;
 }
 
@@ -1034,7 +1038,7 @@ section {
   .serve-item {
     border-left: none;
     padding: 0;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid var(--paper-border);
     padding-top: 28px;
   }
   .serve-item:first-child {
@@ -1053,9 +1057,9 @@ section {
 
 /* ---------- Certifications ---------- */
 .cert-strip {
-  background: var(--navy-950);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+  border-top: 1px solid var(--paper-border);
+  border-bottom: 1px solid var(--paper-border);
 }
 
 .cert-grid {
@@ -1071,8 +1075,8 @@ section {
 }
 
 .cert-card {
-  background: var(--navy-900);
-  border: 1px solid var(--line);
+  background: var(--white);
+  border: 1px solid var(--paper-border);
   border-radius: var(--radius);
   padding: 22px 18px;
   text-align: center;
@@ -1083,14 +1087,14 @@ section {
 }
 
 .cert-card h3 {
-  color: var(--white);
+  color: var(--ink);
   font-size: 0.94rem;
   margin-bottom: 4px;
 }
 
 .cert-card p {
   font-size: 0.8rem;
-  color: var(--text-tertiary);
+  color: var(--ink-soft);
 }
 
 /* ---------- Nationwide coverage / map ---------- */
@@ -1111,7 +1115,7 @@ section {
 .map-embed {
   border-radius: var(--radius);
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 1px solid var(--paper-border);
   aspect-ratio: 4 / 3;
 }
 
@@ -1311,22 +1315,23 @@ section {
 }
 
 .state-pill {
-  border: 1px solid var(--line);
+  border: 1px solid var(--paper-border);
   border-radius: var(--radius-sm);
   padding: 9px 18px;
   font-family: var(--font-head);
   font-size: 0.8rem;
   letter-spacing: 0.03em;
-  color: var(--text-secondary);
-  background: var(--navy-900);
+  color: var(--ink-soft);
+  background: var(--white);
   cursor: pointer;
-  transition: border-color var(--transition), color var(--transition);
+  transition: border-color var(--transition), color var(--transition), background var(--transition);
 }
 
 .state-pill:hover,
 .state-pill:focus-visible {
   border-color: var(--red);
-  color: var(--white);
+  color: var(--red-dark);
+  background: var(--paper);
 }
 
 /* ---------- Pickup-location confirmation banner ---------- */
@@ -1352,7 +1357,7 @@ section {
   align-items: flex-start;
   padding: 10px 0;
   font-size: 0.96rem;
-  color: var(--text-primary);
+  color: var(--ink);
 }
 
 .check-list svg {
@@ -1656,8 +1661,8 @@ section {
 
 /* ---------- Resource / article cards ---------- */
 .resource-card {
-  background: var(--navy-800);
-  border: 1px solid var(--line);
+  background: var(--white);
+  border: 1px solid var(--paper-border);
   border-radius: var(--radius);
   overflow: hidden;
   display: flex;
@@ -1666,7 +1671,7 @@ section {
 
 .resource-card-media {
   height: 110px;
-  background: var(--navy-950);
+  background: var(--paper);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1675,7 +1680,7 @@ section {
 .resource-card-media svg {
   width: 30px;
   height: 30px;
-  fill: rgba(255, 255, 255, 0.7);
+  fill: rgba(17, 17, 19, 0.35);
 }
 
 .resource-card-body {
@@ -1693,9 +1698,9 @@ section {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--text-tertiary);
-  background: var(--navy-950);
-  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  background: var(--paper);
+  border: 1px solid var(--paper-border);
   border-radius: var(--radius-sm);
   padding: 4px 10px;
   margin-bottom: 12px;
@@ -1820,10 +1825,10 @@ section {
   flex-shrink: 0;
   width: 40px;
   height: 40px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--paper-border);
   border-radius: var(--radius-sm);
-  background: var(--navy-900);
-  color: var(--white);
+  background: var(--white);
+  color: var(--ink);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1833,7 +1838,7 @@ section {
 
 .cert-nav:hover {
   border-color: var(--red);
-  background: var(--navy-950);
+  background: var(--paper);
 }
 
 .cert-nav svg {
@@ -1853,7 +1858,7 @@ section {
   width: 8px;
   height: 8px;
   border-radius: var(--radius-sm);
-  background: var(--line);
+  background: var(--paper-border);
   border: none;
   cursor: pointer;
   padding: 0;
