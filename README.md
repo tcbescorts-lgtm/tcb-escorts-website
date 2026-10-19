@@ -14,7 +14,7 @@ privacy.html, terms.html, cookie-policy.html, booking-policy.html   Legal pages
 style.css, script.js, i18n.js, analytics.js
 pilot-car-*.webp, team-member-vest.webp   Photos (640px and 1200px versions)
 partner-*.webp                            Partner logos
-hero-bg.jpg, logo.png, logo-header.png, logo-emblem.png, favicons
+hero-black-van-truck.jpg (home page hero), logo.png, logo-header.png, logo-emblem.png, favicons
 robots.txt, sitemap.xml, vercel.json
 ```
 
