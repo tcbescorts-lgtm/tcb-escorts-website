@@ -181,6 +181,37 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+
+  /* ---------------- Count-up numbers ---------------- */
+  (function () {
+    var nums = document.querySelectorAll(".stats-grid .stat b");
+    if (!nums.length) return;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function run(el) {
+      var txt = el.getAttribute("data-final") || el.textContent;
+      el.setAttribute("data-final", txt);
+      var m = txt.match(/^(\D*)([\d,]+)(.*)$/);
+      if (!m || reduce) return;
+      var target = parseInt(m[2].replace(/,/g, ""), 10), start = null, dur = 1600;
+      function fmt(n) { return m[2].indexOf(",") > -1 ? n.toLocaleString("en-US") : String(n); }
+      function step(t) {
+        if (start === null) start = t;
+        var p = Math.min((t - start) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+        el.textContent = m[1] + fmt(Math.round(target * e)) + m[3];
+        if (p < 1) requestAnimationFrame(step); else el.textContent = txt;
+      }
+      el.textContent = m[1] + "0" + m[3];
+      requestAnimationFrame(step);
+    }
+    if (!("IntersectionObserver" in window)) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { run(en.target); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.6 });
+    nums.forEach(function (n) { io.observe(n); });
+  })();
+
   /* ---------------- Current year in footer ---------------- */
   var yearEl = document.getElementById("year");
   if (yearEl) {
@@ -243,7 +274,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         { once: true }
       );
-      heroImg.src = "hero-bg.jpg";
+      heroImg.src = "hero-black-van-truck.jpg";
       if (heroImg.complete && heroImg.naturalWidth > 0) {
         heroImg.classList.add("is-visible");
       }

@@ -2626,3 +2626,18 @@ svg, iframe, video { max-width: 100%; }
 .cert-col a { color: var(--white); text-decoration: underline; }
 @media (max-width: 768px) { .cert-head { flex-direction: column; align-items: flex-start; } .cert-cols { grid-template-columns: 1fr; } }
 .hero { --hero-media-position: center 60%; }
+
+/* Round 9: tighter spacing */
+section { padding: 56px 0; }
+.stats-strip { padding: 0; }
+.stats-grid .stat { padding: 16px 10px; }
+.stats-grid .stat span { margin-top: 4px; font-size: 0.72rem; }
+.hero { min-height: 560px; padding: 130px 0 70px; }
+.section-head { margin-bottom: 28px; }
+.cta-band { padding: 44px 0; }
+@media (max-width: 768px) {
+  section { padding: 36px 0; }
+  .stats-strip { padding: 0; }
+  .hero { min-height: 480px; padding: 100px 0 50px; }
+  .stats-grid .stat { padding: 12px 8px; }
+}
