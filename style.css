@@ -2641,3 +2641,11 @@ section { padding: 56px 0; }
   .hero { min-height: 480px; padding: 100px 0 50px; }
   .stats-grid .stat { padding: 12px 8px; }
 }
+
+/* Partners (restored, robust) */
+.partners-section { background: #ffffff; padding: 40px 0; }
+.partners-section h2 { color: var(--ink); }
+.partners-section .section-tag { color: var(--red-dark); }
+.partner-marquee { -webkit-mask-image: none; mask-image: none; }
+.partner-track .partner-tile { display: flex; align-items: center; justify-content: center; }
+.partner-track .partner-tile img { width: 100%; height: 100%; object-fit: contain; }
