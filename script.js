@@ -83,9 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /* ---------------- Forms (Web3Forms — no backend required) ----------------
-     Setup: create a free access key at https://web3forms.com (just enter
-     your email, no account/password needed) and paste it into the hidden
-     "access_key" input on each form below, replacing the placeholder.
+     The access key is a public identifier stored in each form's hidden
+     "access_key" input (contact.html and careers.html).
   ------------------------------------------------------------------------- */
   document.querySelectorAll("form[data-form]").forEach(function (form) {
     form.addEventListener("submit", function (e) {
@@ -102,10 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       if (!accessKeyInput || !accessKeyInput.value || accessKeyInput.value.indexOf("YOUR_") === 0) {
-        showStatus(
-          "error",
-          "Form is not fully configured yet. Add your free Web3Forms access key in js/script.js setup (see comments) — until then, please call (601) 633-9096 or email admin@tcbescorts.com."
-        );
+        showStatus("error", "This form is temporarily unavailable. Please call dispatch at (601) 633-9096 or email admin@tcbescorts.com.");
         return;
       }
 
@@ -126,6 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(function (data) {
           if (data.success) {
+            document.dispatchEvent(new CustomEvent("tcb:form-success", { detail: { form: form.getAttribute("data-form") } }));
             form.reset();
             showStatus("success", "Thank you. Your request has been sent — our dispatch team will follow up shortly.");
           } else {
@@ -271,72 +268,6 @@ document.addEventListener("DOMContentLoaded", function () {
     tryHeroImage();
   }
 
-  /* ---------------- Trusted Partners — logo loader ----------------
-     The section starts [hidden]. Each real logo file that loads keeps its
-     tile (and its duplicate, for the seamless loop); any that 404 are
-     removed. If zero real logos exist yet, the whole section is removed —
-     nothing fake or broken ever shows. Drop partner-1.png..partner-8.png
-     into the project root to activate it.
-  ------------------------------------------------------------------------- */
-  var partnersSection = document.getElementById("partners");
-  if (partnersSection) {
-    var primaryTiles = Array.prototype.slice.call(
-      partnersSection.querySelectorAll(".partner-logo:not([aria-hidden])")
-    );
-    var total = primaryTiles.length;
-    var settled = 0;
-    var loadedCount = 0;
-
-    function settleOne() {
-      settled++;
-      if (settled === total) {
-        if (loadedCount > 0) {
-          partnersSection.hidden = false;
-        } else {
-          partnersSection.remove();
-        }
-      }
-    }
-
-    if (total === 0) {
-      partnersSection.remove();
-    } else {
-      primaryTiles.forEach(function (tile) {
-        var img = tile.querySelector("img");
-        if (!img) {
-          settleOne();
-          return;
-        }
-        var src = img.getAttribute("src");
-
-        function onOk() {
-          loadedCount++;
-          settleOne();
-        }
-
-        function onFail() {
-          tile.remove();
-          var dup = partnersSection.querySelector('.partner-logo[aria-hidden] img[src="' + src + '"]');
-          if (dup && dup.closest(".partner-logo")) {
-            dup.closest(".partner-logo").remove();
-          }
-          settleOne();
-        }
-
-        img.addEventListener("load", onOk, { once: true });
-        img.addEventListener("error", onFail, { once: true });
-
-        if (img.complete) {
-          if (img.naturalWidth === 0) {
-            onFail();
-          } else {
-            onOk();
-          }
-        }
-      });
-    }
-  }
-
   /* ---------------- Certifications carousel ---------------- */
   var certTrack = document.getElementById("cert-track");
   if (certTrack) {
@@ -400,3 +331,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+/* Mobile action bar: Call / Text / Quote, shown on small screens only */
+(function () {
+  if (document.querySelector(".mobile-bar")) return;
+  var pre = /\/blog\//.test(location.pathname) ? "../" : "";
+  var bar = document.createElement("div");
+  bar.className = "mobile-bar";
+  bar.innerHTML =
+    '<a class="mobile-bar-call" href="tel:+16016339096">Call Dispatch</a>' +
+    '<a class="mobile-bar-text" href="sms:6016339096?body=Hi%2C%20TCB%20Escorts%20can%20you%20tell%20me%20more%20about%20this%3F">Text Us</a>' +
+    '<a class="mobile-bar-quote" href="' + pre + 'contact.html#quote">Get a Quote</a>';
+  document.body.appendChild(bar);
+})();

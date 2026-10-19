@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tcbescorts.com/sitemap.xml
+Sitemap: https://www.tcbescorts.com/sitemap.xml

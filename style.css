@@ -640,7 +640,7 @@ section {
        shift left to keep the pilot/escort vehicle as the visual focus
        (it sits left-of-frame in the source photo), rather than a centered
        crop that favors the truck and load. Re-tune if the photo changes. */
-    object-position: var(--hero-media-position-mobile, 18% 58%);
+    object-position: var(--hero-media-position-mobile, 60% 60%);
   }
   .hero-overlay {
     /* On mobile the text column spans full width over the photo, so the
@@ -1295,6 +1295,18 @@ section {
   margin-top: 14px;
 }
 
+.form-consent {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+.form-consent a {
+  color: var(--red-dark);
+  text-decoration: underline;
+}
+
 .form-status {
   margin-top: 16px;
   padding: 12px 14px;
@@ -1393,7 +1405,7 @@ section {
 }
 
 .us-state {
-  fill: var(--red);
+  fill: #3b3b42;
   stroke: var(--white);
   stroke-width: 1.4;
   transition: fill var(--transition);
@@ -1402,7 +1414,7 @@ section {
 
 .us-state-link:hover .us-state,
 .us-state-link:focus-visible .us-state {
-  fill: var(--red-dark);
+  fill: var(--red);
 }
 
 .us-state-link:focus-visible .us-state {
@@ -1430,7 +1442,7 @@ section {
   width: 14px;
   height: 14px;
   border-radius: 3px;
-  background: var(--red);
+  background: #3b3b42;
   flex-shrink: 0;
 }
 
@@ -1736,6 +1748,20 @@ section {
   top: 12px;
 }
 
+/* ---------- Global keyboard focus visibility ----------
+   Form fields, the language select, the coverage-map states, and the skip
+   link already have purpose-built focus treatments (see above). This catch
+   -all covers every other interactive element (nav links, buttons, card
+   links, FAQ toggles, carousel controls, floating buttons) with a visible,
+   on-brand focus ring, so keyboard/screen-reader users always get a clear
+   indicator rather than relying on whatever the browser defaults to. */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
 /* ---------- Page hero (interior pages) ---------- */
 .page-hero {
   position: relative;
@@ -1824,74 +1850,51 @@ section {
   flex-grow: 1;
 }
 
-/* ---------- Trusted Partners — sliding logo strip ----------
-   Hidden by default (see [hidden] below); a tiny script un-hides this once
-   at least one real partner-N.png loads, and removes it entirely if none
-   do — so nothing fake or broken ever displays. White background specifically
-   so both dark- and light-colored partner logos stay legible; each logo
-   keeps its own natural aspect ratio (height-constrained, width auto)
-   rather than being forced into identical boxes. ------------------------ */
-.partners-section[hidden] {
-  display: none;
+/* ---------- Trusted Partners — uniform logo grid ---------- */
+.partner-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
 }
 
-.partners-marquee {
-  position: relative;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-}
-
-.partners-track {
-  display: flex;
-  align-items: center;
-  gap: 56px;
-  width: max-content;
-  animation: partners-scroll 32s linear infinite;
-}
-
-.partners-marquee:hover .partners-track {
-  animation-play-state: paused;
-}
-
-@keyframes partners-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.partner-logo {
-  flex-shrink: 0;
+.partner-tile {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 64px;
+  aspect-ratio: 5 / 3;
+  padding: 18px;
+  background: var(--white);
+  border: 1px solid var(--paper-border);
+  border-radius: var(--radius, 8px);
 }
 
-.partner-logo img {
+.partner-tile--dark {
+  background: var(--navy-900);
+  border-color: var(--navy-900);
+}
+
+.partner-tile img {
+  width: 100%;
   height: 100%;
-  width: auto;
-  max-width: 190px;
   object-fit: contain;
-  transition: transform var(--transition);
 }
 
-.partner-logo:hover img {
-  transform: translateY(-2px);
+@media (max-width: 960px) {
+  .partner-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-@media (max-width: 640px) {
-  .partner-logo {
-    height: 46px;
+@media (max-width: 560px) {
+  .partner-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
-  .partner-logo img {
-    max-width: 140px;
-  }
-  .partners-track {
-    gap: 36px;
+  .partner-tile {
+    padding: 14px;
   }
 }
 
@@ -1986,4 +1989,476 @@ section {
     animation: none !important;
     transition: none !important;
   }
+}
+
+/* ---------- Legal pages (Privacy / Terms / Cookie / Booking policy) ---------- */
+.legal-doc {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.legal-doc h2 {
+  font-size: 1.25rem;
+  margin-top: 40px;
+  margin-bottom: 12px;
+}
+
+.legal-doc h2:first-child {
+  margin-top: 0;
+}
+
+.legal-doc h3 {
+  font-size: 1rem;
+  margin-top: 22px;
+  margin-bottom: 8px;
+}
+
+.legal-doc p {
+  margin-bottom: 16px;
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+.legal-doc a {
+  color: var(--red-dark);
+  text-decoration: underline;
+}
+
+.legal-doc code {
+  background: var(--paper);
+  border: 1px solid var(--paper-border);
+  border-radius: var(--radius-sm);
+  padding: 1px 6px;
+  font-size: 0.88em;
+}
+
+.needs-review {
+  display: block;
+  margin-top: 8px;
+  padding: 10px 14px;
+  background: var(--paper);
+  border-left: 3px solid var(--red);
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.legal-disclaimer {
+  margin-top: 44px;
+  padding-top: 20px;
+  border-top: 1px solid var(--paper-border);
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* ---------- Footer legal links ---------- */
+.footer-legal-links a {
+  color: var(--text-tertiary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer-legal-links a:hover {
+  color: var(--white);
+}
+
+/* ---------- Cookie / tracking notice banner ----------
+   Notice-only (not a consent gate): nothing on this Site loads or changes
+   behavior based on interacting with this banner, since there is no
+   optional tracking to turn on/off — it exists purely for transparency
+   about local storage + third-party embeds (Google Fonts/Maps, Web3Forms).
+   Dismissing it sets a localStorage flag so it does not show again. */
+.cookie-notice {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1200;
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--navy-900);
+  color: var(--text-secondary);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.cookie-notice[hidden] {
+  display: none;
+}
+
+.cookie-notice p {
+  flex: 1 1 260px;
+  font-size: 0.86rem;
+  margin: 0;
+}
+
+.cookie-notice a {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.cookie-notice .btn {
+  flex-shrink: 0;
+}
+
+/* ---------- Blog articles ---------- */
+.blog-post .blog-meta {
+  color: var(--text-muted, #5c6068);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+.blog-post ul,
+.blog-post ol {
+  margin: 0 0 18px 1.2em;
+  padding-left: 0.6em;
+}
+.blog-post li {
+  margin-bottom: 8px;
+}
+.blog-post a {
+  color: var(--red);
+  text-decoration: underline;
+}
+.blog-note {
+  margin: 28px 0;
+  padding: 16px 18px;
+  background: var(--white);
+  border: 1px solid var(--paper-border);
+  border-left: 3px solid var(--red);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+}
+.blog-sources {
+  font-size: 0.92rem;
+  word-break: break-word;
+}
+a.resource-card {
+  color: inherit;
+  text-decoration: none;
+}
+a.resource-card:hover h3 {
+  color: var(--red);
+}
+@media (max-width: 960px) and (min-width: 561px) {
+  .partner-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+  }
+  .partner-tile {
+    padding: 10px;
+  }
+}
+
+/* ---------- Fleet photos ---------- */
+.fleet-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.fleet-item {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--navy-900);
+  aspect-ratio: 16 / 10;
+}
+.fleet-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 960px) {
+  .fleet-grid { grid-template-columns: repeat(2, 1fr); }
+  .fleet-grid--3 .fleet-item:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .fleet-grid { grid-template-columns: 1fr; gap: 12px; }
+}
+.blog-figure {
+  margin: 0 0 24px;
+}
+.blog-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+/* ---------- Mobile polish ---------- */
+.mobile-bar { display: none; }
+img { max-width: 100%; height: auto; }
+@media (max-width: 768px) {
+  html, body { overflow-x: hidden; }
+  body { padding-bottom: 64px; }
+  .mobile-bar {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: var(--navy-950);
+    border-top: 1px solid var(--line);
+    padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+    gap: 8px;
+  }
+  .mobile-bar a {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-head);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+  .mobile-bar-call { background: transparent; color: var(--white); border: 2px solid var(--white); }
+  .mobile-bar-quote { background: var(--red); color: var(--white); border: 2px solid var(--red); }
+  .floating-sms { display: none; }
+  .back-to-top { bottom: 76px; right: 14px; }
+  .cookie-notice { bottom: 76px; }
+  .btn { white-space: normal; }
+}
+@media (max-width: 480px) {
+  .btn { padding: 14px 22px; }
+  .legal-doc table { display: block; overflow-x: auto; }
+}
+
+/* =========================================================
+   Round 3: text-first layout, photography, contact numbers
+   ========================================================= */
+.header-phone {
+  display: none;
+  font-family: var(--font-head);
+  font-size: 0.86rem;
+  letter-spacing: 0.03em;
+  color: var(--white);
+  white-space: nowrap;
+  text-decoration: none;
+}
+.header-phone span {
+  color: var(--red);
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  margin-right: 4px;
+}
+@media (min-width: 1180px) {
+  .header-phone { display: inline-block; }
+}
+.footer-phone span {
+  display: inline-block;
+  min-width: 62px;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Cookie / analytics choices */
+.cookie-notice .cookie-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Text Us pill (replaces icon-only button) */
+.floating-sms {
+  width: auto;
+  height: 46px;
+  padding: 0 20px;
+  border-radius: var(--radius-sm);
+  background: var(--red);
+  border-color: var(--red);
+  font-family: var(--font-head);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--white);
+}
+.floating-sms:hover { background: var(--navy-950); border-color: var(--line); }
+.back-to-top { bottom: 80px; }
+
+/* Mobile bar: three actions */
+@media (max-width: 768px) {
+  .mobile-bar a { font-size: 0.8rem; letter-spacing: 0.03em; }
+  .mobile-bar-text { background: transparent; color: var(--white); border: 2px solid var(--white); }
+  .floating-sms { display: none; }
+}
+
+/* Photos in split layouts */
+.photo-frame {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--navy-900);
+  aspect-ratio: 4 / 3;
+}
+.photo-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.photo-frame--wide { aspect-ratio: 16 / 10; }
+
+/* Text-only feature blocks (no icons) */
+.text-blocks { display: grid; gap: 22px; margin-top: 8px; }
+.text-block {
+  padding-left: 18px;
+  border-left: 3px solid var(--red);
+}
+.text-block h3 { margin-bottom: 6px; }
+.text-block p { margin-bottom: 8px; font-size: 0.97rem; }
+
+.lead-p { font-size: 1.04rem; }
+
+/* Plain list (replaces icon check lists) */
+.check-list { list-style: none; padding: 0; margin: 0; }
+.check-list li { padding: 8px 0 8px 22px; position: relative; display: block; }
+.check-list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 17px;
+  width: 7px;
+  height: 7px;
+  background: var(--red);
+}
+.check-list svg { display: none; }
+
+/* Credentials list */
+.cred-list {
+  list-style: none;
+  margin: 0 auto 28px;
+  padding: 0;
+  max-width: 820px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 12px;
+}
+.cred-list li {
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--white);
+  border: 1px solid var(--line);
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+}
+.cred-action { text-align: center; margin: 0; }
+
+.insurance-callout {
+  margin: 24px 0;
+  padding: 20px 22px;
+  background: var(--white);
+  border: 1px solid var(--paper-border);
+  border-left: 3px solid var(--red);
+  border-radius: var(--radius);
+}
+.insurance-callout h3 { margin-bottom: 6px; }
+.insurance-callout p { margin-bottom: 12px; }
+
+.btn-outline-dark {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--ink);
+}
+.btn-outline-dark:hover { background: var(--ink); color: var(--white); }
+
+/* Card thumbnails */
+.resource-card-img { aspect-ratio: 16 / 10; overflow: hidden; background: var(--navy-900); }
+.resource-card-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.center-link { text-align: center; margin: 28px 0 0; }
+
+/* Contact list without icons */
+.contact-info-item { display: block; padding: 14px 0; border-bottom: 1px solid var(--paper-border); }
+.contact-info-item:last-child { border-bottom: none; }
+.contact-info-item h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--red); }
+.contact-info-item p, .contact-info-item a { display: block; margin: 0 0 2px; }
+.contact-info-item .sub-note { font-size: 0.86rem; color: var(--text-muted, #5c6068); }
+
+.icon-box { display: none; }
+
+@media (max-width: 560px) {
+  .cookie-notice .cookie-actions { width: 100%; }
+  .cookie-notice .cookie-actions .btn { flex: 1; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+}
+
+.photo-frame--tall { aspect-ratio: 4 / 5; max-width: 460px; margin-left: auto; margin-right: auto; }
+.photo-frame--tall img { object-position: center 30%; }
+
+/* State map labels and chips */
+.us-state-label {
+  font-family: var(--font-head);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  fill: #fff;
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+.us-state-label--out {
+  fill: var(--ink);
+  text-anchor: start;
+  pointer-events: all;
+  cursor: pointer;
+}
+.us-state-leader {
+  stroke: #8a8a92;
+  stroke-width: 0.8;
+  pointer-events: none;
+}
+.us-state-link:hover .us-state-label--out,
+.us-state-link:focus-visible .us-state-label--out { fill: var(--red); }
+.state-chips {
+  list-style: none;
+  margin: 26px auto 0;
+  padding: 0;
+  max-width: 760px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.state-chips a {
+  display: block;
+  min-width: 48px;
+  padding: 10px 8px;
+  text-align: center;
+  font-family: var(--font-head);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--paper-border);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+}
+.state-chips a:hover,
+.state-chips a:focus-visible { background: var(--red); border-color: var(--red); color: var(--white); }
+.state-chips-title { text-align: center; margin: 28px 0 0; font-family: var(--font-head); font-size: 0.82rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-soft); }
+@media (max-width: 640px) {
+  .us-state-label { font-size: 13px; }
 }

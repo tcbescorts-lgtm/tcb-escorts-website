@@ -1,66 +1,39 @@
-# TCB Escorts LLC — Website
+# TCB Escorts LLC: Website
 
-Static, production-ready website for TCB Escorts LLC (nationwide pilot car / oversize load escort services). Plain HTML/CSS/JS — no build step, no backend required.
+Static site (plain HTML/CSS/JS, no build step, no backend). Deployed from GitHub to Vercel.
 
 ## Structure
 
 ```
-index.html         Home
-services.html       Lead / Chase / High Pole / Steer / Route Survey detail
-about.html          Company story, standards, certifications
-service-area.html   Nationwide coverage, all 50 states
-careers.html         Join the pilot car network (application form)
-resources.html      Guides & articles hub + link to FAQ
-contact.html        Get a quote (main form) + FAQ
-style.css           All styles
-script.js           Nav, forms, FAQ accordion, counters, reveal animation
-logo.png, favicon-32.png, favicon-192.png, favicon-512.png
-robots.txt, sitemap.xml, vercel.json
+index.html, services.html, about.html, service-area.html, careers.html,
+contact.html, resources.html          Main pages
+blog/                                  10 articles (linked from resources.html)
+privacy.html, terms.html, cookie-policy.html, booking-policy.html   Legal pages
+style.css, script.js, i18n.js          Styles, behavior, English/Spanish text
+analytics.js                           Consent-gated Google Analytics (see below)
+images/                                Pilot car photos (640px and 1200px WebP)
+partners/                              Partner logos (WebP)
+hero-bg.jpg, logo.png, favicons, robots.txt, sitemap.xml, vercel.json
 ```
 
-All files sit flat at the project root (no subfolders) — this matches exactly how GitHub's web upload tool saves them, so uploads never break image/CSS/JS paths. If you ever reorganize into folders, update every `href`/`src` reference across all seven HTML files to match.
+Blog pages use `../` paths because they sit in a subfolder. When uploading to GitHub, keep the `blog/`, `images/` and `partners/` folders intact.
 
-## One setup step before launch: connect the forms
+## Forms (Web3Forms)
 
-The Get a Quote form (`contact.html`) and the driver application form (`careers.html`) submit through **Web3Forms** — a free service that emails form submissions straight to your inbox with zero backend code.
+Both forms (contact.html and careers.html) post to Web3Forms with the access key in a hidden `access_key` input. The key is a public identifier by design. In the Web3Forms dashboard, set the retention period to 30 days so it matches the Privacy Policy.
 
-1. Go to https://web3forms.com and enter the inbox you want submissions sent to (e.g. admin@tcbescorts.com). No account or password required — you'll get an access key instantly by email.
-2. The key goes in each HTML file, not `script.js`. In `contact.html` and `careers.html`, find:
-   ```html
-   <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
-   ```
-   and replace `YOUR_WEB3FORMS_ACCESS_KEY` with the key Web3Forms emails you.
-3. Save, commit, and redeploy. Test both forms once live.
+## Analytics (Google Analytics 4)
 
-Until this is done, the forms will show a friendly error asking the visitor to call or email directly — they won't fail silently.
+`analytics.js` is the only place GA is installed (Measurement ID G-G45DSEGPS2). It loads Google Analytics only after a visitor clicks Accept on the cookie banner, treats a Global Privacy Control signal as Decline, and exposes a "Cookie Settings" footer link. Events: page views (automatic), `click_to_call`, `click_to_text`, `click_email`, `request_insurance_docs`, `generate_lead` (successful form). Do not paste a second GA snippet into any page, because that would double-count.
 
-## Adding real photos
+## Phone numbers and messaging
 
-Right now the site uses illustrations and icons instead of photography. Two spots are wired up to accept real images automatically — just add a file with the exact name below to the project root and it appears with no code changes:
+- Dispatch: (601) 633-9096. Office: (601) 612-0106.
+- "Text Us" links use `sms:6016339096?body=Hi%2C%20TCB%20Escorts%20can%20you%20tell%20me%20more%20about%20this%3F`.
+- "Request Insurance & Credentials" links use the same number with the message "Hi, TCB Escorts. May I request a copy of your insurance documentation and credentials?" The visitor presses Send. No insurance documents are published on the site.
 
-- **Homepage hero background** — save a wide photo (1920×1080 or similar, a truck/escort scene works well) as `hero-bg.jpg`. It displays behind the dark overlay on the homepage hero, matching the "photo behind bold headline" look of your SourceBlue-style inspiration. If the file isn't there, the hero just shows the dark gradient — no broken image, no error.
-- **Interior page headers** — every other page (Services, About, Service Area, Careers, Contact) shares one optional background photo. Save it as `page-hero-bg.jpg` and it appears behind the dark overlay on all five headers at once. Same graceful fallback if it's missing.
-- **Fleet gallery** — on the About page (`about.html`), there's a 6-photo grid under "Our Fleet." Save your vehicle photos as `fleet-1.jpg` through `fleet-6.jpg` and each one fills in automatically. Empty slots show a light "Add fleet-N.jpg" placeholder instead of a broken-image icon, so it's safe to launch before you have all six.
-- **Trusted Partners logos** — the auto-scrolling logo strip (homepage) reads `partner-1.png` through `partner-8.png`. Each is a fixed rectangular slot with `contain` fitting (logos aren't cropped). Missing files show a neutral placeholder block instead of a broken-image icon, so it's safe to launch before you have all eight.
+## Maintenance notes
 
-All slots are built as fixed-ratio containers, so dropping in a new or higher-res photo later never shifts the layout — just replace the file (same filename) and it slots right in.
-
-Photos should be reasonably compressed (under ~500KB each) so the site stays fast — most phone photos will need resizing first. Partner logos should ideally be transparent PNGs.
-
-## Resources page
-
-`resources.html` is the guides/articles hub. Nine of the ten cards are non-clickable "Coming Soon" placeholders (by design — no dead links until the articles are written); the tenth, "Frequently Asked Questions," links live to the FAQ section on the Contact page (`contact.html#faq`). As you write each guide, turn its card into a real `<a>` link pointing at the new article page.
-
-## Map
-
-The Contact page embeds a Google Map pinned to 4780 I-55 North, Jackson, MS 39211 (no API key required). To change it, open `contact.html`, find the `<iframe src="https://maps.google.com/maps?q=...">` line, and replace the address (URL-encoded, spaces as `%20`).
-
-## Phone number display policy
-
-Per request, the phone number no longer appears as visible text in the header, top bar, hero, or any "Call Dispatch" button — those are now icon/label-only links that still dial `(601) 633-9096` via `tel:` when tapped or clicked. The number is still shown as text in two places for reference: the footer's Contact column (every page) and the Contact page's "Contact Info" card. Say the word if you'd like it removed from those too. A floating text-message button (bottom-right, every page) opens the visitor's messaging app pre-addressed to the same number via `sms:`.
-
-## Updating content
-
-Every page is plain HTML — open any `.html` file and edit the text directly. Shared styles live in `style.css`; shared behavior (nav, forms, FAQ) lives in `script.js`. There's no template engine, so header/footer markup is repeated on each page — if you change the nav or footer, update it on all six pages.
-
-See the deployment guide provided separately for GitHub + Vercel setup, custom domain connection, and how to push future updates.
+- Header and footer markup is repeated on each page; update all pages if you change them.
+- Blog pages and the resources cards were generated from one source. If you edit an article, edit its HTML file directly.
+- Service coverage is stated as 48 states. The list of states has not been supplied, so the site does not name them.
