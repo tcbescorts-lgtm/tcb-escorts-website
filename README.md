@@ -37,3 +37,5 @@ Both forms (contact.html and careers.html) post to Web3Forms with the access key
 - Header and footer markup is repeated on each page; update all pages if you change them.
 - If you edit an article, edit its blog-*.html file directly.
 - Service coverage is the 48 contiguous states (Alaska and Hawaii are not served).
+- Photos: each photo is used at most twice across the site. Add new photos instead of reusing.
+- The "Blog" link in the header points to resources.html, which lists all blog-*.html articles.

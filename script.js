@@ -1,5 +1,5 @@
 /* =========================================================================
-   TCB ESCORTS LLC — Site Scripts
+   TCB ESCORTS LLC - Site Scripts
    Handles: mobile nav, FAQ accordion, quote/careers form submission
    (Web3Forms), pickup-location prefill, back-to-top, active nav link.
    ========================================================================= */
@@ -41,21 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
     link.addEventListener("click", closeNav);
   });
 
-  /* ---------------- Back to top button ---------------- */
-  var backToTop = document.querySelector(".back-to-top");
-  if (backToTop) {
-    window.addEventListener("scroll", function () {
-      if (window.scrollY > 500) {
-        backToTop.classList.add("show");
-      } else {
-        backToTop.classList.remove("show");
-      }
-    });
-    backToTop.addEventListener("click", function () {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  }
-
   /* ---------------- FAQ accordion ---------------- */
   document.querySelectorAll(".faq-item").forEach(function (item) {
     var question = item.querySelector(".faq-q");
@@ -82,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* ---------------- Forms (Web3Forms — no backend required) ----------------
+  /* ---------------- Forms (Web3Forms - no backend required) ----------------
      The access key is a public identifier stored in each form's hidden
      "access_key" input (contact.html and careers.html).
   ------------------------------------------------------------------------- */
@@ -124,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (data.success) {
             document.dispatchEvent(new CustomEvent("tcb:form-success", { detail: { form: form.getAttribute("data-form") } }));
             form.reset();
-            showStatus("success", "Thank you. Your request has been sent — our dispatch team will follow up shortly.");
+            showStatus("success", "Thank you. Your request has been sent. Our dispatch team will follow up shortly.");
           } else {
             showStatus("error", "Something went wrong sending your request. Please call (601) 633-9096 or email admin@tcbescorts.com.");
           }
@@ -191,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var currentPage = window.location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".main-nav a").forEach(function (link) {
     var href = link.getAttribute("href");
-    if (href === currentPage || (currentPage === "" && href === "index.html")) {
+    if (href === currentPage || (currentPage === "" && href === "index.html") || (href === "resources.html" && currentPage.indexOf("blog-") === 0)) {
       link.classList.add("active");
     }
   });
@@ -206,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
      The hero ships with a dark gradient + line-texture background (see
      .hero-media in style.css) so it looks intentional on its own. Drop a
      hero-bg.mp4 (muted/looped, no audio needed) and/or hero-bg.jpg into the
-     project root and this fades the real media in automatically — no code
+     project root and this fades the real media in automatically - no code
      changes required. Video is preferred over the still photo when both
      are present; if neither exists, the gradient stays exactly as-is.
   ------------------------------------------------------------------------- */

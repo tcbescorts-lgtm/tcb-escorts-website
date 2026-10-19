@@ -1,27 +1,27 @@
 /* =========================================================================
-   TCB ESCORTS LLC — Global Stylesheet
+   TCB ESCORTS LLC - Global Stylesheet
    Original brand palette: black / charcoal / red / yellow-free, white text,
    single red accent. Squared, professional, minimal motion.
    (Variable names below still say "navy-*" internally for low-risk find/replace
-   history, but the values are the site's original black/charcoal scale —
+   history, but the values are the site's original black/charcoal scale -
    no blue was ever part of the brand.)
    ========================================================================= */
 
 :root {
-  /* Dark scale (primary background) — original black/charcoal, no navy blue */
-  --navy-950: #3b4048;
-  --navy-900: #4a4f58;
-  --navy-800: #565c66;
-  --navy-700: #626872;
+  /* Dark scale (primary background) - original black/charcoal, no navy blue */
+  --navy-950: #2b2e35;
+  --navy-900: #363a42;
+  --navy-800: #40444c;
+  --navy-700: #4b505a;
   --line: rgba(255, 255, 255, 0.18);
   --line-soft: rgba(255, 255, 255, 0.07);
 
-  /* Single accent — original brand red, sampled from the logo */
+  /* Single accent - original brand red, sampled from the logo */
   --red: #ed1f2b;
   --red-dark: #b8121c;
   --red-darker: #8c0e15;
 
-  /* Neutrals — original off-white / grays */
+  /* Neutrals - original off-white / grays */
   --white: #ffffff;
   --ink: #111113;
   --ink-soft: #55606b;
@@ -477,12 +477,12 @@ section {
   display: block;
 }
 
-/* ---------- Hero — full-bleed photo/video background ----------
+/* ---------- Hero - full-bleed photo/video background ----------
    Structure: .hero > .hero-media (bg image/video, absolutely filled) +
    .hero-overlay (gradient for text contrast) + .container (text, above both).
    .hero-media has a dark, textured gradient of its own as the base layer,
    so the section looks intentional even before a real photo is dropped in.
-   Drop a real photo in as hero-bg.jpg (1920x1080+ recommended) — script.js
+   Drop a real photo in as hero-bg.jpg (1920x1080+ recommended) - script.js
    detects it and fades it in automatically; no code changes needed. A
    hero-bg.mp4 (muted, looped, no audio) takes priority over the still photo
    if both are present. ------------------------------------------------- */
@@ -497,7 +497,7 @@ section {
   border-bottom: 1px solid var(--line);
   background:
     radial-gradient(ellipse 90% 70% at 20% 15%, rgba(237, 31, 43, 0.16), transparent 60%),
-    linear-gradient(180deg, #3b4048 0%, #4a4f58 45%, #3b4048 100%);
+    linear-gradient(180deg, #2b2e35 0%, #363a42 45%, #2b2e35 100%);
 }
 
 .hero-media {
@@ -534,7 +534,7 @@ section {
 }
 
 /* Faint road-line texture on the base gradient, standing in for a photo
-   until one is provided — reads as an intentional dark surface, not an
+   until one is provided - reads as an intentional dark surface, not an
    empty/broken background. */
 .hero-media::after {
   content: "";
@@ -636,7 +636,7 @@ section {
   }
   .hero-media img,
   .hero-media video {
-    /* The narrow mobile frame only shows a slice of the wide source photo —
+    /* The narrow mobile frame only shows a slice of the wide source photo -
        shift left to keep the pilot/escort vehicle as the visual focus
        (it sits left-of-frame in the source photo), rather than a centered
        crop that favors the truck and load. Re-tune if the photo changes. */
@@ -667,14 +667,14 @@ section {
 }
 
 @media (max-width: 560px) {
-  /* Mobile header stays to Logo | Menu | Get a Quote — the wordmark wraps
+  /* Mobile header stays to Logo | Menu | Get a Quote - the wordmark wraps
      awkwardly at this width, and the graphic mark alone is already the
      recognizable brand element. */
   .brand-text {
     display: none;
   }
   /* Longer translated CTA labels (e.g. Spanish "Solicitar Cotizacion") must
-     not push the hamburger toggle off-screen — shrink the button instead. */
+     not push the hamburger toggle off-screen - shrink the button instead. */
   .nav-toggle {
     flex-shrink: 0;
   }
@@ -1019,7 +1019,7 @@ section {
   font-size: 0.94rem;
 }
 
-/* ---------- Why TCB — simple icon + label list, not cards ---------- */
+/* ---------- Why TCB - simple icon + label list, not cards ---------- */
 .why-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1064,7 +1064,7 @@ section {
   text-transform: uppercase;
 }
 
-/* ---------- Who We Serve — simple divided columns ---------- */
+/* ---------- Who We Serve - simple divided columns ---------- */
 .serve-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1218,7 +1218,7 @@ section {
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* ---------- Forms — light cards for contrast/readability ---------- */
+/* ---------- Forms - light cards for contrast/readability ---------- */
 .form-card {
   background: var(--white);
   border-radius: var(--radius);
@@ -1387,7 +1387,7 @@ section {
 }
 
 /* ---------- Interactive USA coverage map ----------
-   All 50 states render red — TCB Escorts services all 50 states, so there
+   All 50 states render red - TCB Escorts services all 50 states, so there
    are no "uncovered" states to show in gray. Each state is wrapped in a
    real <a href="contact.html?pickup=STATE#quote"> element (not a JS click
    handler), so click, keyboard (Tab + Enter/Space), and screen-reader
@@ -1405,7 +1405,7 @@ section {
 }
 
 .us-state {
-  fill: #5b616b;
+  fill: #3f444d;
   stroke: var(--white);
   stroke-width: 1.4;
   transition: fill var(--transition);
@@ -1442,7 +1442,7 @@ section {
   width: 14px;
   height: 14px;
   border-radius: 3px;
-  background: #5b616b;
+  background: #3f444d;
   flex-shrink: 0;
 }
 
@@ -1850,7 +1850,7 @@ button:focus-visible,
   flex-grow: 1;
 }
 
-/* ---------- Trusted Partners — uniform logo grid ---------- */
+/* ---------- Trusted Partners - uniform logo grid ---------- */
 .partner-grid {
   list-style: none;
   margin: 0;
@@ -1978,7 +1978,7 @@ button:focus-visible,
   background: var(--red);
 }
 
-/* ---------- Reveal — kept static; no scroll-triggered motion ---------- */
+/* ---------- Reveal - kept static; no scroll-triggered motion ---------- */
 .reveal {
   opacity: 1;
   transform: none;
@@ -2067,7 +2067,7 @@ button:focus-visible,
 /* ---------- Cookie / tracking notice banner ----------
    Notice-only (not a consent gate): nothing on this Site loads or changes
    behavior based on interacting with this banner, since there is no
-   optional tracking to turn on/off — it exists purely for transparency
+   optional tracking to turn on/off - it exists purely for transparency
    about local storage + third-party embeds (Google Fonts/Maps, Web3Forms).
    Dismissing it sets a localStorage flag so it does not show again. */
 .cookie-notice {
@@ -2475,19 +2475,19 @@ img { max-width: 100%; height: auto; }
 .site-header .container { padding-top: 10px; padding-bottom: 10px; }
 .brand img { height: 84px; width: auto; transition: filter 0.25s ease; }
 @media (max-width: 560px) { .brand img { height: 62px; } }
-.main-nav a { color: #5b616b; transition: color 0.2s ease; }
+.main-nav a { color: #3f444d; transition: color 0.2s ease; }
 .main-nav a:hover { color: #1f2328; }
 .main-nav a.active { color: #1f2328; box-shadow: inset 0 -2px 0 var(--red); }
 .lang-select {
   background-color: #ffffff;
   border-color: #cfd3d9;
-  color: #5b616b;
+  color: #3f444d;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235b616b'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
 }
 .lang-select option { background: #ffffff; color: #1f2328; }
-.nav-toggle span { background: #5b616b; }
+.nav-toggle span { background: #3f444d; }
 
-.site-header.is-gray { background: #5b616b; border-bottom-color: rgba(255,255,255,0.2); }
+.site-header.is-gray { background: #3f444d; border-bottom-color: rgba(255,255,255,0.2); }
 .site-header.is-gray .brand img { filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(255,255,255,0.9)); }
 
 @media (min-width: 993px) {
@@ -2500,11 +2500,128 @@ img { max-width: 100%; height: auto; }
     color: #ffffff;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
   }
-  .site-header.is-gray .lang-select option { background: #5b616b; color: #ffffff; }
+  .site-header.is-gray .lang-select option { background: #3f444d; color: #ffffff; }
 }
 .site-header.is-gray .nav-toggle span { background: #ffffff; }
 @media (max-width: 992px) {
   .main-nav { background: #ffffff; border-left: 1px solid #e4e6ea; }
-  .main-nav a { color: #5b616b; }
+  .main-nav a { color: #3f444d; }
 }
 .site-footer .brand img { height: 56px; width: auto; }
+
+
+/* ---------- Round 6 ---------- */
+.site-header .brand { display: flex; align-items: center; gap: 10px; }
+.site-header .brand-text strong { color: #3f444d; font-size: 1.15rem; letter-spacing: 0.06em; }
+.site-header.is-gray .brand-text strong { color: #fff; }
+@media (max-width: 560px) { .site-header .brand-text strong { font-size: 0.95rem; } }
+@media (max-width: 400px) { .site-header .brand-text { display: none; } }
+
+.footer-grid { grid-template-columns: 1.3fr 1.5fr 1fr; }
+.footer-lists { display: grid; grid-template-columns: auto auto; gap: 0 28px; justify-content: start; }
+@media (max-width: 768px) { .footer-col--company { grid-column: 1 / -1; order: 3; } }
+@media (max-width: 560px) { .footer-col--company { order: 0; } }
+
+.floating-sms {
+  width: 56px; height: 56px; padding: 0; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--red); border: 0; color: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+.floating-sms svg { width: 26px; height: 26px; }
+.floating-sms:hover { background: var(--navy-950); }
+.back-to-top { display: none !important; }
+
+.legal-doc { max-width: 620px; }
+.legal-doc h2 { font-size: 1.05rem; margin-top: 30px; margin-bottom: 8px; }
+.legal-doc h3 { font-size: 0.92rem; }
+.legal-doc p, .legal-doc li { font-size: 0.86rem; line-height: 1.7; margin-bottom: 12px; }
+@media (max-width: 768px) { .floating-sms { display: none; } }
+
+/* ================= Round 7 ================= */
+/* Prevent stretched photos on small screens: width/height attributes set the ratio, CSS keeps it */
+img { height: auto; }
+.brand img { height: 84px; width: auto; }
+.site-footer .brand img { height: 56px; width: auto; }
+html, body { max-width: 100%; overflow-x: hidden; }
+svg, iframe, video { max-width: 100%; }
+.fleet-item img, .photo-frame img, .partner-tile img, .resource-card-img img { height: 100%; }
+.blog-figure img { height: auto; max-height: 460px; object-fit: cover; }
+
+/* Mobile menu: red links, white panel */
+@media (max-width: 992px) {
+  .main-nav a, .main-nav a:hover, .site-header.is-gray .main-nav a { color: var(--red); font-weight: 600; font-size: 1.15rem; }
+  .main-nav a.active, .site-header.is-gray .main-nav a.active { color: var(--red-dark); box-shadow: inset 0 -2px 0 var(--red); }
+}
+@media (max-width: 992px) {
+  .brand img { height: 56px; }
+  .header-cta a.btn-primary { display: none; }
+}
+@media (max-width: 560px) {
+  .site-header .brand-text { display: block; }
+  .site-header .brand-text strong { font-size: 1rem; }
+  .brand img { height: 46px; }
+  .container { padding-left: 16px; padding-right: 16px; }
+  h1 { overflow-wrap: anywhere; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  body { padding-bottom: 70px; }
+}
+@media (max-width: 380px) { .site-header .brand-text strong { font-size: 0.85rem; letter-spacing: 0.03em; } }
+
+/* Cookie banner: colours that always contrast */
+.cookie-notice { background: #ffffff; color: #3f444d; border: 1px solid #d8dbe0; }
+.cookie-notice p { color: #3f444d; }
+.cookie-notice a { color: var(--red-dark); text-decoration: underline; }
+.cookie-notice .btn-outline { background: transparent; color: #3f444d; border: 2px solid #3f444d; }
+.cookie-notice .btn-outline:hover { background: #3f444d; color: #ffffff; }
+.cookie-notice .btn-primary { background: var(--red); color: #ffffff; border: 2px solid var(--red); }
+
+/* Partners: continuous right-to-left slider, white tiles */
+.partner-marquee { overflow: hidden; width: 100%; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.partner-track { list-style: none; margin: 0; padding: 0; display: flex; gap: 16px; width: max-content; animation: partner-scroll 40s linear infinite; }
+.partner-marquee:hover .partner-track { animation-play-state: paused; }
+.partner-track .partner-tile { flex: 0 0 200px; width: 200px; aspect-ratio: 5 / 3; background: #ffffff; border: 1px solid #e4e6ea; padding: 14px; }
+@keyframes partner-scroll { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 8px)); } }
+@media (max-width: 560px) { .partner-track .partner-tile { flex-basis: 150px; width: 150px; } .partner-track { animation-duration: 30s; } }
+@media (prefers-reduced-motion: reduce) { .partner-track { animation: none; } .partner-marquee { overflow-x: auto; } }
+
+/* Credentials */
+.cred-sub { text-align: center; font-size: 0.95rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin: 8px 0 14px; }
+.cred-list--sm li { font-size: 0.78rem; padding: 8px 14px; }
+.cred-list a { color: inherit; text-decoration: underline; }
+.cred-detail { list-style: none; max-width: 820px; margin: 0 auto 28px; padding: 0; display: grid; gap: 10px; }
+.cred-detail li { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; padding: 12px 16px; border-left: 3px solid var(--red); background: rgba(255,255,255,0.05); }
+.cred-detail strong { color: var(--white); }
+
+/* Light and dark mode follow the browser setting */
+@media (prefers-color-scheme: dark) {
+  :root { --ink: #eef0f2; --ink-soft: #b9bec6; --paper: #262a30; --paper-border: #373c44; color-scheme: dark; }
+  body { background: #1c1f24; color: #eef0f2; }
+  .bg-white, .stats-strip, .stat-bar, .partners-section { background: #1c1f24; }
+  .bg-alt, .bg-paper { background: #262a30; }
+  .service-card, .form-card, .resource-card, .insurance-callout, .blog-note, .state-chips a, .resource-badge { background: #2b3036; color: #eef0f2; border-color: #3a3f47; }
+  .field input, .field select, .field textarea { background: #20242a; color: #eef0f2; border-color: #3a3f47; }
+  .legal-doc code { background: #2b3036; color: #eef0f2; border-color: #3a3f47; }
+  .legal-doc a, .blog-post a { color: #ff6b73; }
+  .legal-doc, .legal-doc p, .legal-doc li, .blog-post p, .blog-post li { color: #dfe2e6; }
+  h1, h2, h3, h4 { color: #ffffff; }
+  .service-card h3, .resource-card h3, .form-card h3 { color: #ffffff; }
+  .main-nav a { color: #e6e8eb; }
+  .site-header { background: #1c1f24; border-bottom-color: #373c44; }
+  .site-header.is-gray { background: #2b3036; }
+  .site-header .brand-text strong { color: #ffffff; }
+  .site-header .brand img { filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(255,255,255,0.8)); }
+  .nav-toggle span { background: #ffffff; }
+  .lang-select { background-color: #2b3036; color: #ffffff; }
+  .lang-select option { background: #2b3036; color: #ffffff; }
+  .cookie-notice { background: #3f444d; color: #ffffff; border-color: #565c66; }
+  .cookie-notice p { color: #ffffff; }
+  .cookie-notice a { color: #ffffff; }
+  .cookie-notice .btn-outline { color: #ffffff; border-color: #ffffff; }
+  .cookie-notice .btn-outline:hover { background: #ffffff; color: #3f444d; }
+  .us-state { fill: #7b828d; }
+  .us-state-label { fill: #ffffff; }
+}
+@media (prefers-color-scheme: dark) and (max-width: 992px) {
+  .main-nav { background: #1c1f24; border-left-color: #373c44; }
+}

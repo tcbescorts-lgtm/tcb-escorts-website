@@ -1,7 +1,7 @@
 /* =========================================================================
-   TCB ESCORTS LLC — Language Switcher (English / Español)
+   TCB ESCORTS LLC - Language Switcher (English / Español)
    Lightweight, dependency-free i18n: swaps text on elements marked with
-   data-i18n (textContent), data-i18n-html (innerHTML — dictionary content
+   data-i18n (textContent), data-i18n-html (innerHTML - dictionary content
    only, never user input), and data-i18n-placeholder (input placeholder).
    Preference persists across pages via localStorage.
    ========================================================================= */
@@ -26,8 +26,8 @@
       "footer.rights": "All rights reserved.",
 
       "hero.eyebrow": "Big Loads. Safe Roads.",
-      "hero.h1": "Pilot Car Services<br />Across 48 States",
-      "hero.tagline": "TCB Escorts provides experienced lead, chase, high pole and steer pilot car services across the United States, plus route surveys and escort vehicle support for oversize and overweight loads.",
+      "hero.h1": "Pilot Car Services<br />Across United States",
+      "hero.tagline": "TCB Escorts provides experienced lead, chase, high pole, route survey and steer pilot car services across the United States and escort vehicle support for oversize and overweight loads.",
       "hero.lead": "48-state coverage &bull; Certified escorts &bull; $1 Million insured. TCB Escorts LLC delivers Lead, Chase, High Pole, Steer, and Route Survey escorts for carriers, brokers, and owner-operators across 48 states.",
       "hero.trust.coverage": "Nationwide Coverage",
       "hero.trust.certified": "Certified Escorts",
@@ -169,8 +169,8 @@
       "footer.rights": "Todos los derechos reservados.",
 
       "hero.eyebrow": "Cargas Grandes. Caminos Seguros.",
-      "hero.h1": "Servicios de Vehículo Piloto<br />en 48 Estados",
-      "hero.tagline": "TCB Escorts ofrece servicios de vehículo piloto con escoltas lead, chase, high pole y steer con experiencia en todo Estados Unidos, además de estudios de ruta y apoyo con vehículos de escolta para cargas sobredimensionadas y con sobrepeso.",
+      "hero.h1": "Servicios de Vehículo Piloto<br />en Todo Estados Unidos",
+      "hero.tagline": "TCB Escorts ofrece servicios de vehículo piloto con escoltas lead, chase, high pole, estudios de ruta y steer con experiencia en todo Estados Unidos, y apoyo con vehículos de escolta para cargas sobredimensionadas y de sobrepeso.",
       "hero.lead": "Cobertura en 48 estados &bull; Escoltas certificados &bull; Asegurados por $1 Millón. TCB Escorts LLC ofrece escoltas Lead, Chase, High Pole, Steer y Route Survey para transportistas, corredores y operadores independientes en 48 estados.",
       "hero.trust.coverage": "Cobertura Nacional",
       "hero.trust.certified": "Escoltas Certificados",
@@ -316,6 +316,7 @@
 
   /* TCB-OVERRIDES-START */
   Object.assign(DICT.en, {
+  "nav.blog": "Blog",
   "cta.contactUs": "Contact Us",
   "cta.messageUs": "Message Us",
   "cta.callDispatch": "Call Dispatch",
@@ -346,7 +347,7 @@
   "faq.q6": "Do I need a pilot car for my load?",
   "faq.a6": "It depends on your load's dimensions, the route and the permit for each state. The permit sets the number and type of escorts, so check it first, and read our guide on <a href=\"blog-when-is-a-pilot-car-required.html\">when a pilot car is required</a>.",
   "hero.eyebrow": "Big Loads. Safe Roads.",
-  "hero.tagline": "TCB Escorts provides experienced lead, chase, high pole and steer pilot car services across the United States, plus route surveys and escort vehicle support for oversize and overweight loads.",
+  "hero.tagline": "TCB Escorts provides experienced lead, chase, high pole, route survey and steer pilot car services across the United States and escort vehicle support for oversize and overweight loads.",
   "hero.trust.coverage": "48-State Coverage",
   "hero.trust.insured": "$1 Million Insured",
   "hero.trust.based": "Based in Jackson, Mississippi", "stats.insurance": "Insurance Coverage",
@@ -406,6 +407,7 @@
   "finalcta.sub": "Send us your route, dimensions and travel date, and we will confirm your escort positions."
 });
   Object.assign(DICT.es, {
+  "nav.blog": "Blog",
   "cta.contactUs": "Contáctenos",
   "cta.messageUs": "Envíenos un Mensaje",
   "cta.callDispatch": "Llamar a Despacho",
@@ -436,7 +438,7 @@
   "faq.q6": "¿Necesito un vehículo piloto para mi carga?",
   "faq.a6": "Depende de las dimensiones de su carga, la ruta y el permiso de cada estado. El permiso fija el número y tipo de escoltas, así que revíselo primero y lea nuestra guía sobre <a href=\"blog-when-is-a-pilot-car-required.html\">cuándo se requiere un vehículo piloto</a>.",
   "hero.eyebrow": "Cargas Grandes. Caminos Seguros.",
-  "hero.tagline": "TCB Escorts ofrece servicios de vehículo piloto con escoltas lead, chase, high pole y steer con experiencia en todo Estados Unidos, además de estudios de ruta y apoyo con vehículos de escolta para cargas sobredimensionadas y con sobrepeso.",
+  "hero.tagline": "TCB Escorts ofrece servicios de vehículo piloto con escoltas lead, chase, high pole, estudios de ruta y steer con experiencia en todo Estados Unidos, y apoyo con vehículos de escolta para cargas sobredimensionadas y de sobrepeso.",
   "hero.trust.coverage": "Cobertura en 48 Estados",
   "hero.trust.insured": "Asegurados por $1 Millón",
   "hero.trust.based": "Con sede en Jackson, Mississippi", "stats.insurance": "Cobertura de Seguro",

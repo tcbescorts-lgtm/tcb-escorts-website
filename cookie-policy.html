@@ -25,12 +25,14 @@
   <div class="container">
     <a href="index.html" class="brand">
       <img src="logo-header.png" alt="TCB Escorts LLC logo" width="119" height="84" />
+      <span class="brand-text"><strong>TCB ESCORTS</strong></span>
     </a>
     <nav class="main-nav" aria-label="Primary">
       <a href="index.html" data-i18n="nav.home">Home</a>
       <a href="services.html" data-i18n="nav.services">Services</a>
       <a href="about.html" data-i18n="nav.about">About</a>
       <a href="service-area.html" data-i18n="nav.serviceArea">Service Area</a>
+      <a href="resources.html" data-i18n="nav.blog">Blog</a>
       <a href="careers.html" data-i18n="nav.careers">Careers</a>
       <a href="contact.html" data-i18n="nav.contact">Contact</a>
     </nav>
@@ -67,15 +69,15 @@
         <h2>1. Analytics Cookies Are Optional</h2>
         <p>The Site works without analytics. The first time you visit, a banner asks whether to allow Google Analytics. <strong>Google Analytics is not loaded unless you click Accept.</strong> If you click Decline, or your browser sends a Global Privacy Control signal, it is not loaded. You can change your choice at any time using the Cookie Settings link in the footer. We do not run Meta/Facebook Pixel or advertising trackers.</p>
         <p>If you accept, Google Analytics 4 (Measurement ID G-G45DSEGPS2) sets the following first-party cookies, which help Google count visits and distinguish visitors:</p>
-        <p><code>_ga</code> &mdash; identifies a browser to distinguish users.<br />
-        <code>_ga_G45DSEGPS2</code> &mdash; stores session state for our Analytics property.</p>
+        <p><code>_ga</code>: identifies a browser to distinguish users.<br />
+        <code>_ga_G45DSEGPS2</code>: stores session state for our Analytics property.</p>
         <p>Google Analytics receives page views and events such as clicks on call, text and email links and successful form submissions. We have turned off Google signals and ad personalization.</p>
         <h2>2. Local Storage (Not a Cookie)</h2>
         <p>The Site uses your browser's <strong>local storage</strong> for two things: your language preference (key <code>tcb-lang</code>) and your analytics choice (key <code>tcb-analytics-consent</code>). These values stay on your device, are not transmitted to us, and contain no personal information. Clearing your browser's site data resets them, and the banner will ask again.</p>
         <h2>3. Cookies Set by Embedded Third-Party Services</h2>
         <p>Certain pages embed content from Google, which may set its own cookies or similar identifiers that we do not control:</p>
-        <p><strong>Google Maps</strong> &mdash; embedded on the Home and Contact pages to display our Jackson, MS location. Loading the map may allow Google to set cookies and process data under Google's own privacy policy.<br />
-        <strong>Google Fonts</strong> &mdash; used to load this Site's typefaces (Oswald and Inter) from Google's servers. This involves a direct connection from your browser to Google, which may log your IP address as part of normal web request handling.</p>
+        <p><strong>Google Maps</strong>: embedded on the Home and Contact pages to display our Jackson, MS location. Loading the map may allow Google to set cookies and process data under Google's own privacy policy.<br />
+        <strong>Google Fonts</strong>: used to load this Site's typefaces (Oswald and Inter) from Google's servers. This involves a direct connection from your browser to Google, which may log your IP address as part of normal web request handling.</p>
         <p>We do not receive any data from these Google-hosted resources ourselves; the connection is directly between your browser and Google.</p>
 
         <h2>4. Form Submissions</h2>
@@ -117,25 +119,27 @@
         <p data-i18n-html="footer.desc">Pilot Car &amp; Oversize Load Escort Services Across 48 States.</p>
         <address>4780 I-55 North<br />Jackson, MS 39211</address>
       </div>
-      <div class="footer-col">
+      <div class="footer-col footer-col--company">
         <h4 data-i18n="footer.company">Company</h4>
+        <div class="footer-lists">
         <ul>
           <li><a href="index.html" data-i18n="nav.home">Home</a></li>
           <li><a href="services.html" data-i18n="nav.services">Services</a></li>
           <li><a href="about.html" data-i18n="nav.about">About</a></li>
           <li><a href="service-area.html" data-i18n="nav.serviceArea">Service Area</a></li>
+        </ul>
+        <ul>
           <li><a href="careers.html" data-i18n="nav.careers">Careers</a></li>
-          <li><a href="resources.html">Resources</a></li>
+          <li><a href="resources.html" data-i18n="nav.blog">Blog</a></li>
           <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
         </ul>
+      </div>
       </div>
       <div class="footer-col">
         <h4 data-i18n="footer.contactHeading">Contact</h4>
         <ul>
           <li class="footer-phone"><span>Dispatch</span> <a href="tel:+16016339096">(601) 633-9096</a></li>
           <li class="footer-phone"><span>Office</span> <a href="tel:+16016120106">(601) 612-0106</a></li>
-          <li><a href="sms:6016339096?body=Hi%2C%20TCB%20Escorts%20can%20you%20tell%20me%20more%20about%20this%3F">Text Us</a></li>
-          <li><a href="mailto:admin@tcbescorts.com">admin@tcbescorts.com</a></li>
           <li><a href="sms:6016339096?body=Hi%2C%20TCB%20Escorts.%20May%20I%20request%20a%20copy%20of%20your%20insurance%20documentation%20and%20credentials%3F" data-track="request_insurance_docs">Request Insurance &amp; Credentials</a></li>
           <li><a href="https://www.instagram.com/tcbescorts/" target="_blank" rel="noopener">Instagram</a></li>
           <li><a href="contact.html#quote" class="btn btn-primary btn-sm" style="margin-top:6px;" data-i18n="cta.getQuote">Get a Quote</a></li>
@@ -154,9 +158,7 @@
   </div>
 </footer>
 
-<a href="sms:6016339096?body=Hi%2C%20TCB%20Escorts%20can%20you%20tell%20me%20more%20about%20this%3F" class="floating-sms" aria-label="Text TCB Escorts dispatch">Text Us</a>
-
-<button class="back-to-top" aria-label="Back to top"><svg viewBox="0 0 24 24"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg></button>
+<a href="sms:6016339096?body=Hi%2C%20TCB%20Escorts%20can%20you%20tell%20me%20more%20about%20this%3F" class="floating-sms" aria-label="Text TCB Escorts dispatch" title="Text Us"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M4 3h16a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><circle cx="8" cy="10.5" r="1.3" fill="#ed1f2b"/><circle cx="12" cy="10.5" r="1.3" fill="#ed1f2b"/><circle cx="16" cy="10.5" r="1.3" fill="#ed1f2b"/></svg></a>
 <script src="analytics.js"></script>
 <script src="i18n.js"></script>
 <script src="script.js"></script>
