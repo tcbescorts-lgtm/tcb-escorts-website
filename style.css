@@ -2543,7 +2543,8 @@ img { max-width: 100%; height: auto; }
 img { height: auto; }
 .brand img { height: 84px; width: auto; }
 .site-footer .brand img { height: 56px; width: auto; }
-html, body { max-width: 100%; overflow-x: hidden; }
+body { max-width: 100%; overflow-x: clip; }
+html { overflow-x: visible; }
 svg, iframe, video { max-width: 100%; }
 .fleet-item img, .photo-frame img, .partner-tile img, .resource-card-img img { height: 100%; }
 .blog-figure img { height: auto; max-height: 460px; object-fit: cover; }
@@ -2593,35 +2594,18 @@ svg, iframe, video { max-width: 100%; }
 .cred-detail li { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; padding: 12px 16px; border-left: 3px solid var(--red); background: rgba(255,255,255,0.05); }
 .cred-detail strong { color: var(--white); }
 
-/* Light and dark mode follow the browser setting */
-@media (prefers-color-scheme: dark) {
-  :root { --ink: #eef0f2; --ink-soft: #b9bec6; --paper: #262a30; --paper-border: #373c44; color-scheme: dark; }
-  body { background: #1c1f24; color: #eef0f2; }
-  .bg-white, .stats-strip, .stat-bar, .partners-section { background: #1c1f24; }
-  .bg-alt, .bg-paper { background: #262a30; }
-  .service-card, .form-card, .resource-card, .insurance-callout, .blog-note, .state-chips a, .resource-badge { background: #2b3036; color: #eef0f2; border-color: #3a3f47; }
-  .field input, .field select, .field textarea { background: #20242a; color: #eef0f2; border-color: #3a3f47; }
-  .legal-doc code { background: #2b3036; color: #eef0f2; border-color: #3a3f47; }
-  .legal-doc a, .blog-post a { color: #ff6b73; }
-  .legal-doc, .legal-doc p, .legal-doc li, .blog-post p, .blog-post li { color: #dfe2e6; }
-  h1, h2, h3, h4 { color: #ffffff; }
-  .service-card h3, .resource-card h3, .form-card h3 { color: #ffffff; }
-  .main-nav a { color: #e6e8eb; }
-  .site-header { background: #1c1f24; border-bottom-color: #373c44; }
-  .site-header.is-gray { background: #2b3036; }
-  .site-header .brand-text strong { color: #ffffff; }
-  .site-header .brand img { filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px rgba(255,255,255,0.8)); }
-  .nav-toggle span { background: #ffffff; }
-  .lang-select { background-color: #2b3036; color: #ffffff; }
-  .lang-select option { background: #2b3036; color: #ffffff; }
-  .cookie-notice { background: #3f444d; color: #ffffff; border-color: #565c66; }
-  .cookie-notice p { color: #ffffff; }
-  .cookie-notice a { color: #ffffff; }
-  .cookie-notice .btn-outline { color: #ffffff; border-color: #ffffff; }
-  .cookie-notice .btn-outline:hover { background: #ffffff; color: #3f444d; }
-  .us-state { fill: #7b828d; }
-  .us-state-label { fill: #ffffff; }
-}
-@media (prefers-color-scheme: dark) and (max-width: 992px) {
-  .main-nav { background: #1c1f24; border-left-color: #373c44; }
-}
+/* Compact credentials band */
+.cert-strip { padding: 44px 0; }
+.cert-strip .section-head { margin-bottom: 18px; }
+.cert-strip .section-head p { margin-bottom: 0; }
+.cert-strip .cred-list { margin-bottom: 14px; gap: 8px; }
+.cert-strip .cred-list li { padding: 7px 12px; font-size: 0.78rem; }
+.cert-strip .cred-sub { margin: 4px 0 10px; font-size: 0.8rem; }
+.cert-strip .cred-action { margin-top: 18px; }
+
+/* Photo gallery: equal, aligned tiles */
+.fleet-grid--4 { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.fleet-grid--4 .fleet-item { aspect-ratio: 4 / 3; }
+.fleet-grid--4 .fleet-item img { object-position: center 55%; }
+@media (max-width: 960px) { .fleet-grid--4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .fleet-grid--4 { grid-template-columns: repeat(2, 1fr); gap: 8px; } }
