@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /* Mobile action bar: Call / Text / Quote, shown on small screens only */
 (function () {
   if (document.querySelector(".mobile-bar")) return;
-  var pre = /\/blog\//.test(location.pathname) ? "../" : "";
+  var pre = "";
   var bar = document.createElement("div");
   bar.className = "mobile-bar";
   bar.innerHTML =
@@ -343,4 +343,44 @@ document.addEventListener("DOMContentLoaded", function () {
     '<a class="mobile-bar-text" href="sms:6016339096?body=Hi%2C%20TCB%20Escorts%20can%20you%20tell%20me%20more%20about%20this%3F">Text Us</a>' +
     '<a class="mobile-bar-quote" href="' + pre + 'contact.html#quote">Get a Quote</a>';
   document.body.appendChild(bar);
+})();
+
+/* Adaptive header: white while over dark areas (hero, dark bands, footer);
+   turns gray with white text while over white/light sections. */
+(function () {
+  var header = document.querySelector(".site-header");
+  if (!header || !document.elementFromPoint) return;
+  var ticking = false;
+
+  function isLightColor(bg) {
+    var m = bg.match(/rgba?\(([^)]+)\)/);
+    if (!m) return null;
+    var p = m[1].split(",").map(function (v) { return parseFloat(v); });
+    var a = p.length > 3 ? p[3] : 1;
+    if (a < 0.5) return null; // transparent: keep climbing
+    var lum = (0.2126 * p[0] + 0.7152 * p[1] + 0.0722 * p[2]) / 255;
+    return lum > 0.6;
+  }
+
+  function update() {
+    ticking = false;
+    var y = Math.min(window.innerHeight - 1, Math.round(header.getBoundingClientRect().bottom) + 2);
+    var el = document.elementFromPoint(Math.round(window.innerWidth / 2), y);
+    var light = true;
+    while (el && el !== document.documentElement) {
+      if (el.classList && (el.classList.contains("hero") || el.classList.contains("hero-media"))) { light = false; break; }
+      var r = isLightColor(getComputedStyle(el).backgroundColor);
+      if (r !== null) { light = r; break; }
+      el = el.parentElement;
+    }
+    header.classList.toggle("is-gray", light && window.scrollY > 4);
+  }
+
+  function request() {
+    if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+  }
+  window.addEventListener("scroll", request, { passive: true });
+  window.addEventListener("resize", request);
+  window.addEventListener("load", update);
+  update();
 })();

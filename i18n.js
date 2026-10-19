@@ -27,7 +27,7 @@
 
       "hero.eyebrow": "Big Loads. Safe Roads.",
       "hero.h1": "Pilot Car Services<br />Across 48 States",
-      "hero.tagline": "Professional pilot car and oversize-load escort services for carriers, brokers, and owner-operators.",
+      "hero.tagline": "TCB Escorts provides experienced lead, chase, high pole and steer pilot car services across the United States, plus route surveys and escort vehicle support for oversize and overweight loads.",
       "hero.lead": "48-state coverage &bull; Certified escorts &bull; $1 Million insured. TCB Escorts LLC delivers Lead, Chase, High Pole, Steer, and Route Survey escorts for carriers, brokers, and owner-operators across 48 states.",
       "hero.trust.coverage": "Nationwide Coverage",
       "hero.trust.certified": "Certified Escorts",
@@ -93,8 +93,8 @@
       "partners.h2": "Carriers &amp; Brokers Who Run With Us",
 
       "coverage.tag": "Coverage",
-      "coverage.h2": "Nationwide Coverage",
-      "coverage.sub": "TCB Escorts provides pilot car and oversize load escort services across 48 states, dispatched from our Jackson, Mississippi headquarters.",
+      "coverage.h2": "Pilot Car Services Across the United States",
+      "coverage.sub": "Dispatch arranges lead, chase, high pole and steer coverage along your route in 48 states, using our own vehicles and our established network of drivers. Send us your route and we will confirm coverage for your dates.",
 
       "faq.tag": "FAQ",
       "faq.h2": "Common Questions",
@@ -170,7 +170,7 @@
 
       "hero.eyebrow": "Cargas Grandes. Caminos Seguros.",
       "hero.h1": "Servicios de Vehículo Piloto<br />en 48 Estados",
-      "hero.tagline": "Servicios profesionales de vehículo piloto y escolta de cargas sobredimensionadas para transportistas, corredores y operadores independientes.",
+      "hero.tagline": "TCB Escorts ofrece servicios de vehículo piloto con escoltas lead, chase, high pole y steer con experiencia en todo Estados Unidos, además de estudios de ruta y apoyo con vehículos de escolta para cargas sobredimensionadas y con sobrepeso.",
       "hero.lead": "Cobertura en 48 estados &bull; Escoltas certificados &bull; Asegurados por $1 Millón. TCB Escorts LLC ofrece escoltas Lead, Chase, High Pole, Steer y Route Survey para transportistas, corredores y operadores independientes en 48 estados.",
       "hero.trust.coverage": "Cobertura Nacional",
       "hero.trust.certified": "Escoltas Certificados",
@@ -236,8 +236,8 @@
       "partners.h2": "Transportistas y Corredores Que Confían en Nosotros",
 
       "coverage.tag": "Cobertura",
-      "coverage.h2": "Cobertura Nacional",
-      "coverage.sub": "TCB Escorts brinda servicios de escolta de vehículos piloto y cargas sobredimensionadas en 48 estados, despachados desde nuestra sede en Jackson, Mississippi.",
+      "coverage.h2": "Servicios de Vehículo Piloto en Todo Estados Unidos",
+      "coverage.sub": "Despacho coordina la cobertura lead, chase, high pole y steer a lo largo de su ruta en 48 estados, con nuestros propios vehículos y nuestra red de conductores. Envíenos su ruta y confirmaremos la cobertura para sus fechas.",
 
       "faq.tag": "Preguntas Frecuentes",
       "faq.h2": "Preguntas Comunes",
@@ -316,6 +316,8 @@
 
   /* TCB-OVERRIDES-START */
   Object.assign(DICT.en, {
+  "cta.contactUs": "Contact Us",
+  "cta.messageUs": "Message Us",
   "cta.callDispatch": "Call Dispatch",
   "cta.textUs": "Text Us",
   "intro.link": "Read: What is a pilot car? &rarr;",
@@ -342,9 +344,9 @@
   "faq.q5": "Are your escorts certified and insured?",
   "faq.a5": "Our escorts hold credentials that include WITPAC, TWIC, state certifications, NSC Defensive Driving, CPC and PEVO, and TCB Escorts carries $1,000,000 in insurance coverage. Use the Request Insurance & Credentials button on this page and we will send documentation.",
   "faq.q6": "Do I need a pilot car for my load?",
-  "faq.a6": "It depends on your load's dimensions, the route and the permit for each state. The permit sets the number and type of escorts, so check it first, and read our guide on <a href=\"blog/when-is-a-pilot-car-required.html\">when a pilot car is required</a>.",
+  "faq.a6": "It depends on your load's dimensions, the route and the permit for each state. The permit sets the number and type of escorts, so check it first, and read our guide on <a href=\"blog-when-is-a-pilot-car-required.html\">when a pilot car is required</a>.",
   "hero.eyebrow": "Big Loads. Safe Roads.",
-  "hero.tagline": "Pilot car and escort vehicle services for oversize loads, based in Jackson, Mississippi and working with carriers and brokers across 48 states.",
+  "hero.tagline": "TCB Escorts provides experienced lead, chase, high pole and steer pilot car services across the United States, plus route surveys and escort vehicle support for oversize and overweight loads.",
   "hero.trust.coverage": "48-State Coverage",
   "hero.trust.insured": "$1 Million Insured",
   "hero.trust.based": "Based in Jackson, Mississippi", "stats.insurance": "Insurance Coverage",
@@ -395,8 +397,8 @@
   "fleet.h2": "Our Pilot Cars in the Field",
   "fleet.sub": "TCB Escorts vehicles on real moves, equipped with amber lights, flags and oversize load signs.",
   "coverage.tag": "Coverage",
-  "coverage.h2": "Based in Mississippi, Serving 48 States",
-  "coverage.sub": "Our home base is Jackson, Mississippi, and we provide pilot car services across 48 states. Tell us your route and dispatch will confirm coverage for your dates.",
+  "coverage.h2": "Pilot Car Services Across the United States",
+  "coverage.sub": "Dispatch arranges lead, chase, high pole and steer coverage along your route in 48 states, using our own vehicles and our established network of drivers. Send us your route and we will confirm coverage for your dates.",
   "faq.tag": "FAQ",
   "faq.h2": "Common Questions",
   "finalcta.tag": "Get Started",
@@ -404,6 +406,8 @@
   "finalcta.sub": "Send us your route, dimensions and travel date, and we will confirm your escort positions."
 });
   Object.assign(DICT.es, {
+  "cta.contactUs": "Contáctenos",
+  "cta.messageUs": "Envíenos un Mensaje",
   "cta.callDispatch": "Llamar a Despacho",
   "cta.textUs": "Enviar Mensaje",
   "intro.link": "Lea: ¿Qué es un vehículo piloto? &rarr;",
@@ -430,9 +434,9 @@
   "faq.q5": "¿Sus escoltas están certificados y asegurados?",
   "faq.a5": "Nuestros escoltas tienen credenciales como WITPAC, TWIC, certificaciones estatales, Manejo Defensivo NSC, CPC y PEVO, y TCB Escorts cuenta con $1,000,000 en cobertura de seguro. Use el botón Request Insurance & Credentials de esta página y le enviaremos la documentación.",
   "faq.q6": "¿Necesito un vehículo piloto para mi carga?",
-  "faq.a6": "Depende de las dimensiones de su carga, la ruta y el permiso de cada estado. El permiso fija el número y tipo de escoltas, así que revíselo primero y lea nuestra guía sobre <a href=\"blog/when-is-a-pilot-car-required.html\">cuándo se requiere un vehículo piloto</a>.",
+  "faq.a6": "Depende de las dimensiones de su carga, la ruta y el permiso de cada estado. El permiso fija el número y tipo de escoltas, así que revíselo primero y lea nuestra guía sobre <a href=\"blog-when-is-a-pilot-car-required.html\">cuándo se requiere un vehículo piloto</a>.",
   "hero.eyebrow": "Cargas Grandes. Caminos Seguros.",
-  "hero.tagline": "Servicios de vehículo piloto y escolta para cargas sobredimensionadas, con base en Jackson, Mississippi, trabajando con transportistas y corredores en 48 estados.",
+  "hero.tagline": "TCB Escorts ofrece servicios de vehículo piloto con escoltas lead, chase, high pole y steer con experiencia en todo Estados Unidos, además de estudios de ruta y apoyo con vehículos de escolta para cargas sobredimensionadas y con sobrepeso.",
   "hero.trust.coverage": "Cobertura en 48 Estados",
   "hero.trust.insured": "Asegurados por $1 Millón",
   "hero.trust.based": "Con sede en Jackson, Mississippi", "stats.insurance": "Cobertura de Seguro",
@@ -483,8 +487,8 @@
   "fleet.h2": "Nuestros Vehículos Piloto en Acción",
   "fleet.sub": "Vehículos de TCB Escorts en traslados reales, equipados con luces ámbar, banderas y letreros de carga sobredimensionada.",
   "coverage.tag": "Cobertura",
-  "coverage.h2": "Con Sede en Mississippi, Atendiendo 48 Estados",
-  "coverage.sub": "Nuestra base es Jackson, Mississippi, y ofrecemos servicios de vehículo piloto en 48 estados. Indíquenos su ruta y despacho confirmará la cobertura para sus fechas.",
+  "coverage.h2": "Servicios de Vehículo Piloto en Todo Estados Unidos",
+  "coverage.sub": "Despacho coordina la cobertura lead, chase, high pole y steer a lo largo de su ruta en 48 estados, con nuestros propios vehículos y nuestra red de conductores. Envíenos su ruta y confirmaremos la cobertura para sus fechas.",
   "faq.tag": "Preguntas",
   "faq.h2": "Preguntas Frecuentes",
   "finalcta.tag": "Comience Aquí",

@@ -4,19 +4,19 @@ Static site (plain HTML/CSS/JS, no build step, no backend). Deployed from GitHub
 
 ## Structure
 
+Everything sits flat at the project root (no subfolders). This matches how GitHub's web upload works, so images and pages never lose their paths. Upload every file in this folder.
+
 ```
 index.html, services.html, about.html, service-area.html, careers.html,
-contact.html, resources.html          Main pages
-blog/                                  10 articles (linked from resources.html)
+contact.html, resources.html              Main pages
+blog-*.html                               10 articles (linked from resources.html)
 privacy.html, terms.html, cookie-policy.html, booking-policy.html   Legal pages
-style.css, script.js, i18n.js          Styles, behavior, English/Spanish text
-analytics.js                           Consent-gated Google Analytics (see below)
-images/                                Pilot car photos (640px and 1200px WebP)
-partners/                              Partner logos (WebP)
-hero-bg.jpg, logo.png, favicons, robots.txt, sitemap.xml, vercel.json
+style.css, script.js, i18n.js, analytics.js
+pilot-car-*.webp, team-member-vest.webp   Photos (640px and 1200px versions)
+partner-*.webp                            Partner logos
+hero-bg.jpg, logo.png, logo-header.png, logo-emblem.png, favicons
+robots.txt, sitemap.xml, vercel.json
 ```
-
-Blog pages use `../` paths because they sit in a subfolder. When uploading to GitHub, keep the `blog/`, `images/` and `partners/` folders intact.
 
 ## Forms (Web3Forms)
 
@@ -35,5 +35,5 @@ Both forms (contact.html and careers.html) post to Web3Forms with the access key
 ## Maintenance notes
 
 - Header and footer markup is repeated on each page; update all pages if you change them.
-- Blog pages and the resources cards were generated from one source. If you edit an article, edit its HTML file directly.
-- Service coverage is stated as 48 states. The list of states has not been supplied, so the site does not name them.
+- If you edit an article, edit its blog-*.html file directly.
+- Service coverage is the 48 contiguous states (Alaska and Hawaii are not served).

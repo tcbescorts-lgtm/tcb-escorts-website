@@ -6,7 +6,7 @@
 (function () {
   var MEASUREMENT_ID = "G-G45DSEGPS2";
   var KEY = "tcb-analytics-consent"; // "granted" | "denied"
-  var pre = /\/blog\//.test(location.pathname) ? "../" : "";
+  var pre = "";
   var loaded = false;
 
   window.dataLayer = window.dataLayer || [];
