@@ -2751,3 +2751,30 @@ section { padding: 56px 0; }
 @media (max-width: 960px) { .fleet-grid--6 { grid-template-columns: repeat(2, 1fr); } }
 .photo-frame--tall { aspect-ratio: 4 / 5; }
 .photo-frame--tall img { object-position: center 40%; }
+
+/* ===== Round 11: careers alignment, compact mobile footer ===== */
+.split--top { align-items: start; }
+.split--top .steps { margin: 0; }
+@media (max-width: 900px) { .split--top { gap: 24px; } }
+
+@media (max-width: 768px) {
+  .site-footer { padding: 28px 0 14px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 18px 18px; padding-bottom: 18px; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-brand .brand { margin-bottom: 8px; }
+  .site-footer .brand img { height: 38px; }
+  .footer-brand .brand-text strong { font-size: 0.95rem; }
+  .footer-tagline { font-size: 0.8rem; margin-bottom: 4px; }
+  .footer-brand p, .footer-brand address { font-size: 0.82rem; line-height: 1.45; margin: 0 0 4px; }
+  .footer-col--company { grid-column: auto; order: 0; }
+  .footer-lists { grid-template-columns: 1fr; gap: 0; }
+  .footer-col h4 { font-size: 0.74rem; margin-bottom: 6px; }
+  .footer-col li { margin-bottom: 3px; }
+  .footer-col a, .footer-col p, .footer-col li { font-size: 0.84rem; line-height: 1.4; }
+  .footer-phone span { min-width: 0; margin-right: 4px; }
+  .footer-phone a { white-space: nowrap; }
+  .site-footer .btn { padding: 9px 14px; font-size: 0.75rem; }
+  .footer-bottom { padding-top: 12px; gap: 6px; font-size: 0.74rem; }
+  .footer-legal-links { font-size: 0.74rem; line-height: 1.6; }
+}
+@media (max-width: 360px) { .footer-grid { grid-template-columns: 1fr; } }
