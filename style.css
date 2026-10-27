@@ -2652,3 +2652,102 @@ section { padding: 56px 0; }
 .partner-track .partner-tile { height: 120px; aspect-ratio: auto; }
 .partner-track .partner-tile img { width: auto; height: auto; max-width: 100%; max-height: 90px; }
 @media (max-width: 560px) { .partner-track .partner-tile { height: 90px; } .partner-track .partner-tile img { max-height: 66px; } }
+
+/* =====================================================================
+   Round 10: mobile audit fixes (alignment, compact forms, clean hero,
+   compliance notice, footer). Kept last so it wins over earlier rounds.
+   ===================================================================== */
+
+/* Hero: no slanted line texture over the photo */
+.hero-media::after { content: none; display: none; }
+
+/* Consistent text rhythm inside text columns */
+.split h2, .intro-block h2 { margin-bottom: 14px; }
+.split p + p, .intro-block p + p { margin-top: 12px; }
+.text-blocks { margin-top: 20px; }
+.intro-block { max-width: 760px; }
+.section-head h2 + p { margin-top: 12px; }
+
+/* Single, shared left edge on phones */
+@media (max-width: 640px) {
+  .section-head, .section-head.center { text-align: left; margin-left: 0; margin-right: 0; max-width: none; }
+  .cta-band .section-head, .cta-band { text-align: center; }
+  h1 { font-size: 1.85rem; }
+  h2 { font-size: 1.5rem; }
+  .serve-item, .service-card, .resource-card-body { text-align: left; }
+}
+
+/* Footer: one clean column on phones, nothing squeezed */
+@media (max-width: 640px) {
+  .footer-grid { grid-template-columns: 1fr; row-gap: 28px; }
+  .footer-col--company { grid-column: auto; order: 0; }
+  .footer-brand p, .footer-brand address { max-width: none; }
+  .footer-lists { grid-template-columns: 1fr 1fr; gap: 0 24px; }
+  .footer-phone a { white-space: nowrap; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+.site-footer .btn { white-space: nowrap; }
+
+/* Bottom action bar: labels fit inside their buttons */
+@media (max-width: 768px) {
+  .mobile-bar a { font-size: 0.74rem; letter-spacing: 0.02em; padding: 0 6px; min-height: 44px; white-space: nowrap; }
+}
+
+/* ---------- Compact forms: whole form fits in one phone screen ---------- */
+.form-section { scroll-margin-top: 70px; }
+.form-card { padding: 28px; }
+.form-card > p { margin-bottom: 16px; }
+.form-row { gap: 14px; }
+.field { margin-bottom: 12px; }
+.field label { margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.field input, .field select, .field textarea { padding: 10px 12px; font-size: 16px; line-height: 1.3; }
+.field select, .field input { height: 44px; }
+.field textarea { min-height: 72px; height: 72px; }
+.form-consent { margin: 4px 0 10px; font-size: 0.74rem; }
+.form-note { margin-top: 10px; }
+
+@media (max-width: 640px) {
+  .form-section { padding: 12px 0 28px; }
+  .form-card { padding: 16px 14px; border-radius: var(--radius); }
+  .form-card h3 { font-size: 1.05rem; margin-bottom: 2px; }
+  .form-card > p { font-size: 0.82rem; margin-bottom: 10px; line-height: 1.4; }
+  .form-row { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .field { margin-bottom: 8px; }
+  .field label { font-size: 0.66rem; letter-spacing: 0.03em; margin-bottom: 3px; }
+  .field input, .field select, .field textarea { padding: 8px 10px; }
+  .field select, .field input { height: 40px; }
+  .field input[type="date"] { min-width: 0; -webkit-appearance: none; appearance: none; }
+  .field textarea { min-height: 60px; height: 60px; }
+  .form-consent { font-size: 0.68rem; line-height: 1.4; margin: 2px 0 8px; }
+  .form-card .btn-block { padding: 12px 16px; }
+  .form-note { font-size: 0.72rem; margin-top: 8px; }
+  .form-status { margin-top: 8px; }
+  #apply .section-head { margin-bottom: 14px; }
+  #apply .section-head p { font-size: 0.9rem; }
+  .page-hero--compact { padding: 22px 0 20px; }
+  .page-hero--compact h1 { font-size: 1.5rem; }
+  .page-hero--compact p { font-size: 0.88rem; margin-top: 6px; }
+  .page-hero--compact .breadcrumb { margin-bottom: 6px; }
+}
+
+/* ---------- Global Compliance Notice (compact) ---------- */
+.cookie-notice { max-width: 640px; padding: 14px 16px; gap: 12px; flex-wrap: nowrap; align-items: center; }
+.cookie-notice .cookie-text { flex: 1 1 auto; min-width: 0; }
+.cookie-notice .cookie-title { display: block; font-family: var(--font-head); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.82rem; color: var(--ink); margin-bottom: 4px; }
+.cookie-notice p { font-size: 0.8rem; line-height: 1.45; flex: none; }
+.cookie-notice .cookie-actions { flex-shrink: 0; width: auto; }
+@media (max-width: 560px) {
+  .cookie-notice { flex-wrap: nowrap; left: 8px; right: 8px; padding: 10px 12px; gap: 10px; }
+  .cookie-notice .cookie-title { font-size: 0.74rem; margin-bottom: 2px; }
+  .cookie-notice p { font-size: 0.72rem; line-height: 1.4; }
+  .cookie-notice .cookie-actions { width: auto; }
+  .cookie-notice .cookie-actions .btn { flex: none; padding: 10px 14px; }
+}
+.footer-phone span { min-width: 76px; }
+
+/* Round 11: new team photos */
+.hero { --hero-media-position: center 78%; --hero-media-position-mobile: 47% 88%; }
+.fleet-grid--6 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 960px) { .fleet-grid--6 { grid-template-columns: repeat(2, 1fr); } }
+.photo-frame--tall { aspect-ratio: 4 / 5; }
+.photo-frame--tall img { object-position: center 40%; }

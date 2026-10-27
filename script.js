@@ -274,13 +274,15 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         { once: true }
       );
-      heroImg.src = "hero-black-van-truck.jpg";
+      heroImg.srcset = "hero-tcb-team-vans-1200.webp 1200w, hero-tcb-team-vans.jpg 1920w";
+      heroImg.sizes = "100vw";
+      heroImg.src = "hero-tcb-team-vans.jpg";
       if (heroImg.complete && heroImg.naturalWidth > 0) {
         heroImg.classList.add("is-visible");
       }
     }
 
-    tryHeroVideo();
+    // tryHeroVideo(); (disabled: no hero-bg.mp4 on the server, avoids a 404 on every visit)
     tryHeroImage();
   }
 

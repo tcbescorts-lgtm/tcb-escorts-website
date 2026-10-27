@@ -138,7 +138,7 @@
       "form.name": "Name",
       "form.phone": "Phone",
       "form.email": "Email",
-      "form.position": "Escort Position(s) Needed",
+      "form.position": "Escort Position",
       "form.dateNeeded": "Date Needed",
       "form.pickup": "Pickup Location",
       "form.delivery": "Delivery Location",
@@ -147,7 +147,7 @@
       "form.fullName": "Full Name",
       "form.statesCertified": "States Certified In",
       "form.yearsExperience": "Years of Experience",
-      "form.positionsCertified": "Positions You're Certified For",
+      "form.positionsCertified": "Certified Positions",
       "form.additionalDetails": "Additional Details",
       "form.submitApplication": "Submit Application"
     },
@@ -281,7 +281,7 @@
       "form.name": "Nombre",
       "form.phone": "Teléfono",
       "form.email": "Correo Electrónico",
-      "form.position": "Posición(es) de Escolta Necesaria(s)",
+      "form.position": "Posición de Escolta",
       "form.dateNeeded": "Fecha Necesaria",
       "form.pickup": "Lugar de Recogida",
       "form.delivery": "Lugar de Entrega",
@@ -290,7 +290,7 @@
       "form.fullName": "Nombre Completo",
       "form.statesCertified": "Estados en los que Está Certificado",
       "form.yearsExperience": "Años de Experiencia",
-      "form.positionsCertified": "Posiciones para las que Está Certificado",
+      "form.positionsCertified": "Posiciones Certificadas",
       "form.additionalDetails": "Detalles Adicionales",
       "form.submitApplication": "Enviar Solicitud"
     }

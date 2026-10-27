@@ -55,7 +55,7 @@
 
 <main id="main">
 
-  <section class="page-hero">
+  <section class="page-hero page-hero--compact">
     <div class="container">
       <div class="breadcrumb" data-i18n="breadcrumb.contact">Home / Contact</div>
       <h1 data-i18n="page.contact.h1">Get a Quote or Reach Dispatch</h1>
@@ -63,7 +63,7 @@
     </div>
   </section>
 
-  <section id="quote">
+  <section id="quote" class="form-section">
     <div class="container">
       <div class="split" style="align-items:flex-start;">
 
@@ -96,9 +96,9 @@
 
               <div class="form-row">
                 <div class="field">
-                  <label for="q-position" data-i18n="form.position">Escort Position(s) Needed</label>
+                  <label for="q-position" data-i18n="form.position">Escort Position</label>
                   <select id="q-position" name="Escort Position Needed" required>
-                    <option value="">Select an option</option>
+                    <option value="">Select</option>
                     <option>Lead</option>
                     <option>Chase</option>
                     <option>High Pole</option>
@@ -126,10 +126,10 @@
 
               <div class="field">
                 <label for="q-message" data-i18n="form.loadDetails">Load Details / Message</label>
-                <textarea id="q-message" name="Message" placeholder="Height, width, length, weight, or any other details"></textarea>
+                <textarea id="q-message" name="Message" rows="3" placeholder="Height, width, length, weight, other details"></textarea>
               </div>
 
-              <p class="form-consent">By submitting, you agree that TCB Escorts LLC may contact you by phone, text, or email about this request, using the information above solely to prepare your quote and coordinate service. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Use</a>. We do not use this information for marketing.</p>
+              <p class="form-consent">By submitting, you agree TCB Escorts may contact you about this request. See our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms</a>.</p>
               <button type="submit" class="btn btn-primary btn-block" data-i18n="form.submitRequest" data-label="Submit Request">Submit Request</button>
               <div class="form-status"></div>
               <p class="form-note">Prefer to talk it through? <a href="tel:+16016339096" style="color:var(--red);">Call dispatch</a> at (601) 633-9096 or <a href="sms:6016339096?body=Hi%2C%20TCB%20Escorts%20can%20you%20tell%20me%20more%20about%20this%3F" style="color:var(--red);">text us</a>.</p>
