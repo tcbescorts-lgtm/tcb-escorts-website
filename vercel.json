@@ -33,6 +33,10 @@
     {
       "source": "/api/:path*",
       "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/api/:path*"
+    },
+    {
+      "source": "/t/:path*",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/t/:path*"
     }
   ],
   "headers": [
