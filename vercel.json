@@ -1,25 +1,74 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/portal",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/portal"
+    },
+    {
+      "source": "/portal/:path*",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/portal/:path*"
+    },
+    {
+      "source": "/driver",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/driver"
+    },
+    {
+      "source": "/driver/:path*",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/driver/:path*"
+    },
+    {
+      "source": "/sign-in",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/sign-in"
+    },
+    {
+      "source": "/auth/:path*",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/auth/:path*"
+    },
+    {
+      "source": "/_next/:path*",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/_next/:path*"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/api/:path*"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)\\.(png|jpg|jpeg|svg|webp)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
       ]
     },
     {
       "source": "/(.*)\\.(css|js)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     },
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
     }
   ]
