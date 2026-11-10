@@ -75,6 +75,13 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
+      // Copy for the TCB portal (Quote requests page). Never blocks the email below.
+      try {
+        var portalCopy = new FormData(form);
+        portalCopy.append("form_kind", form.getAttribute("data-form") || "quote");
+        fetch("/api/quote", { method: "POST", body: portalCopy, credentials: "omit" }).catch(function () {});
+      } catch (err) { /* old browser: email still goes out */ }
+
       var statusEl = form.querySelector(".form-status");
       var submitBtn = form.querySelector('button[type="submit"]');
       var accessKeyInput = form.querySelector('input[name="access_key"]');
