@@ -37,6 +37,46 @@
     {
       "source": "/t/:path*",
       "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/t/:path*"
+    },
+    {
+      "source": "/i/:path*",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/i/:path*"
+    },
+    {
+      "source": "/app",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/app"
+    },
+    {
+      "source": "/forbidden",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/forbidden"
+    },
+    {
+      "source": "/manifest.webmanifest",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/manifest.webmanifest"
+    },
+    {
+      "source": "/sw.js",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/sw.js"
+    },
+    {
+      "source": "/favicon.ico",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/favicon.ico"
+    },
+    {
+      "source": "/apple-touch-icon.png",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/apple-touch-icon.png"
+    },
+    {
+      "source": "/icon-maskable-192.png",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/icon-maskable-192.png"
+    },
+    {
+      "source": "/icon-maskable-512.png",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/icon-maskable-512.png"
+    },
+    {
+      "source": "/logo-112.png",
+      "destination": "https://tcb-escorts-portal-tcb-escorts.vercel.app/logo-112.png"
     }
   ],
   "headers": [
