@@ -14,7 +14,7 @@ privacy.html, terms.html, cookie-policy.html, booking-policy.html   Legal pages
 style.css, script.js, i18n.js, analytics.js
 pilot-car-*.webp, team-member-vest.webp   Photos (640px and 1200px versions)
 partner-*.webp                            Partner logos
-hero-black-van-truck.jpg (home page hero), logo.png, logo-header.png, logo-emblem.png, favicons
+hero-tcb-team-vans.jpg + hero-tcb-team-vans-1200.webp (home page hero, loaded by script.js), logo.png, logo-header.png, logo-emblem.png, favicons
 robots.txt, sitemap.xml, vercel.json
 ```
 
@@ -24,13 +24,17 @@ Both forms (contact.html and careers.html) post to Web3Forms with the access key
 
 ## Analytics (Google Analytics 4)
 
-`analytics.js` is the only place GA is installed (Measurement ID G-G45DSEGPS2). It loads Google Analytics only after a visitor clicks Accept on the cookie banner, treats a Global Privacy Control signal as Decline, and exposes a "Cookie Settings" footer link. Events: page views (automatic), `click_to_call`, `click_to_text`, `click_email`, `request_insurance_docs`, `generate_lead` (successful form). Do not paste a second GA snippet into any page, because that would double-count.
+`analytics.js` is the only place GA is installed (Measurement ID G-G45DSEGPS2). The cookie banner has Accept and Decline buttons; scrolling does not count as consent. It loads Google Analytics only after a visitor clicks Accept, treats a Global Privacy Control signal as Decline, and exposes a "Cookie Settings" footer link. Events: page views (automatic), `click_to_call`, `click_to_text`, `click_email`, `request_insurance_docs`, `generate_lead` (successful form). Do not paste a second GA snippet into any page, because that would double-count.
 
 ## Phone numbers and messaging
 
 - Dispatch: (601) 633-9096. Office: (601) 612-0106.
 - "Text Us" links use `sms:6016339096?body=Hi%2C%20TCB%20Escorts%20can%20you%20tell%20me%20more%20about%20this%3F`.
 - "Request Insurance & Credentials" links use the same number with the message "Hi, TCB Escorts. May I request a copy of your insurance documentation and credentials?" The visitor presses Send. No insurance documents are published on the site.
+
+## Security headers (vercel.json)
+
+Site pages get a Content-Security-Policy (only this site, Google Fonts, Google Analytics, Web3Forms and the Google Map embed may load), HSTS and a Permissions-Policy. Portal paths forwarded to the portal app (/portal, /driver, /api, /sign-in, /auth, /_next, /t/, /i/, /app, /forbidden, /sw.js, /manifest.webmanifest) are excluded because the portal sends its own policy. If you add a new outside service (a script, font, map or form provider), add its address to the policy or the browser will block it. The one inline script on every page is allowed by its hash; if you change that line, the hash must change too.
 
 ## Maintenance notes
 

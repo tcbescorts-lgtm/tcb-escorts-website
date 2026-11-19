@@ -59,19 +59,15 @@
     var b = document.createElement("div");
     b.className = "cookie-notice";
     b.setAttribute("role", "region");
-    b.setAttribute("aria-label", "Global Compliance Notice");
+    b.setAttribute("aria-label", "Cookie choice");
+    // Matches the Privacy Policy and Cookie Policy: analytics load only after Accept; Decline keeps them off.
+    // Scrolling or using the page is NOT treated as consent.
     b.innerHTML =
-      "<div class=\"cookie-text\"><strong class=\"cookie-title\">Global Compliance Notice</strong>" +
-      "<p>We use cookies to analyze traffic and ensure legal compliance with international transport regulations. By continuing, you agree to our <a href=\"" + pre + "privacy.html\">Privacy Policy</a>.</p></div>" +
-      "<div class=\"cookie-actions\"><button type=\"button\" class=\"btn btn-primary btn-sm\" data-consent=\"granted\">Continue</button></div>";
+      "<div class=\"cookie-text\"><strong class=\"cookie-title\">Cookies</strong>" +
+      "<p>May we use Google Analytics cookies to see how visitors use this site? They load only if you accept. See our <a href=\"" + pre + "cookie-policy.html\">Cookie Policy</a> and <a href=\"" + pre + "privacy.html\">Privacy Policy</a>.</p></div>" +
+      "<div class=\"cookie-actions\"><button type=\"button\" class=\"btn btn-outline btn-sm\" data-consent=\"denied\">Decline</button> " +
+      "<button type=\"button\" class=\"btn btn-primary btn-sm\" data-consent=\"granted\">Accept</button></div>";
     document.body.appendChild(b);
-    // "By continuing" = scrolling on or using the page also accepts and closes the notice
-    function onContinue() {
-      if (!document.body.contains(b)) return cleanup();
-      if (window.scrollY > 240) { write("granted"); loadAnalytics(); hideBanner(); cleanup(); }
-    }
-    function cleanup() { window.removeEventListener("scroll", onContinue); }
-    window.addEventListener("scroll", onContinue, { passive: true });
     b.addEventListener("click", function (e) {
       var btn = e.target.closest("[data-consent]");
       if (!btn) return;
