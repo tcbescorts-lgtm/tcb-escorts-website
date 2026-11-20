@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var question = item.querySelector(".faq-q");
     var answer = item.querySelector(".faq-a");
     if (!question || !answer) return;
+    question.setAttribute("aria-expanded", item.classList.contains("open") ? "true" : "false");
 
     question.addEventListener("click", function () {
       var isOpen = item.classList.contains("open");
@@ -54,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (openItem !== item) {
           openItem.classList.remove("open");
           openItem.querySelector(".faq-a").style.maxHeight = null;
+          var oq = openItem.querySelector(".faq-q"); if (oq) oq.setAttribute("aria-expanded", "false");
         }
       });
 
@@ -64,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
         item.classList.add("open");
         answer.style.maxHeight = answer.scrollHeight + "px";
       }
+      question.setAttribute("aria-expanded", isOpen ? "false" : "true");
     });
   });
 

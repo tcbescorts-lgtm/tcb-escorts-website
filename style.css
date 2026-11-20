@@ -2778,3 +2778,14 @@ section { padding: 56px 0; }
   .footer-legal-links { font-size: 0.74rem; line-height: 1.6; }
 }
 @media (max-width: 360px) { .footer-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Audit fixes ---------- */
+/* Two-column sections may shrink to the screen (Contact overflowed by 2px at 320px) */
+.split > * { min-width: 0; }
+@media (max-width: 900px) { .split { grid-template-columns: minmax(0, 1fr); } }
+/* Form submit buttons: full width on phones only; on larger screens they size to their label */
+@media (min-width: 769px) { form .btn-block { width: auto; min-width: 240px; padding-left: 2rem; padding-right: 2rem; } }
+/* FAQ: answers that are closed are not reachable by keyboard or screen readers (they were only clipped) */
+.faq-item:not(.open) .faq-a { visibility: hidden; }
+/* Long button labels on the narrowest phones stay on at most two lines */
+@media (max-width: 360px) { .btn { padding-left: .9rem; padding-right: .9rem; letter-spacing: 0; font-size: .84rem; } }
